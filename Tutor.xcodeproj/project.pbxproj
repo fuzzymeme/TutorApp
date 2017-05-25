@@ -14,6 +14,8 @@
 		2B1799A81ED4357400F74A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1799A61ED4357400F74A39 /* LaunchScreen.storyboard */; };
 		2B1799B31ED4357400F74A39 /* TutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1799B21ED4357400F74A39 /* TutorTests.swift */; };
 		2B1799BE1ED4357400F74A39 /* TutorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1799BD1ED4357400F74A39 /* TutorUITests.swift */; };
+		2B4F67431ED46A6700B00F3B /* QandAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F67421ED46A6700B00F3B /* QandAViewModel.swift */; };
+		2B4F67451ED46BA900B00F3B /* QandAGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F67441ED46BA900B00F3B /* QandAGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		2B1799B91ED4357400F74A39 /* TutorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TutorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1799BD1ED4357400F74A39 /* TutorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorUITests.swift; sourceTree = "<group>"; };
 		2B1799BF1ED4357400F74A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B4F67421ED46A6700B00F3B /* QandAViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAViewModel.swift; sourceTree = "<group>"; };
+		2B4F67441ED46BA900B00F3B /* QandAGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				2B1799A41ED4357400F74A39 /* Assets.xcassets */,
 				2B1799A61ED4357400F74A39 /* LaunchScreen.storyboard */,
 				2B1799A91ED4357400F74A39 /* Info.plist */,
+				2B4F67421ED46A6700B00F3B /* QandAViewModel.swift */,
+				2B4F67441ED46BA900B00F3B /* QandAGroup.swift */,
 			);
 			path = Tutor;
 			sourceTree = "<group>";
@@ -189,7 +195,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Richard Smith";
+				ORGANIZATIONNAME = Fuzzymeme;
 				TargetAttributes = {
 					2B1799991ED4357400F74A39 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -262,6 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B4F67431ED46A6700B00F3B /* QandAViewModel.swift in Sources */,
+				2B4F67451ED46BA900B00F3B /* QandAGroup.swift in Sources */,
 				2B1799A01ED4357400F74A39 /* ViewController.swift in Sources */,
 				2B17999E1ED4357400F74A39 /* AppDelegate.swift in Sources */,
 			);
@@ -516,6 +524,7 @@
 				2B1799C41ED4357400F74A39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B1799C51ED4357400F74A39 /* Build configuration list for PBXNativeTarget "TutorTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +533,7 @@
 				2B1799C71ED4357400F74A39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2B1799C81ED4357400F74A39 /* Build configuration list for PBXNativeTarget "TutorUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +542,7 @@
 				2B1799CA1ED4357400F74A39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

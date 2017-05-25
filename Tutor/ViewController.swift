@@ -2,22 +2,69 @@
 //  ViewController.swift
 //  Tutor
 //
-//  Created by Richard Smith on 23/05/2017.
-//  Copyright © 2017 Richard Smith. All rights reserved.
+//  Created by Fuzzymeme on 23/05/2017.
+//  Copyright © 2017 Fuzzymeme. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private var buttonToValueMap = [String : String]()
+    private var buttons = [UIButton]()
+    
+    private let model = QandAViewModel()
+    
+    @IBOutlet weak var optionButtonOne: UIButton!
+    @IBOutlet weak var optionButtonTwo: UIButton!
+    @IBOutlet weak var optionButtonThree: UIButton!
+    @IBOutlet weak var optionButtonFour: UIButton!
+    @IBOutlet weak var successLabel: UILabel!
+    
+    @IBOutlet weak var questionLabel: UILabel!
+    
+    @IBAction func nextButton(_ sender: UIButton) {
+        print("Next Button pressed")
+        moveToNextQuestion()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        questionLabel.text = model.question()
+        
+        buttons.append(contentsOf:
+            [optionButtonOne, optionButtonTwo, optionButtonThree, optionButtonFour]);
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var i = 0
+        for button in buttons {
+            buttonToValueMap[button.restorationIdentifier!] = model.answer(index: i)
+            i += 1
+        }
+        
+        for button in buttons {
+            button.setTitle(buttonToValueMap[button.restorationIdentifier!], for: UIControlState.normal)
+        }
+    }
+    
+    var displaySuccess: String {
+        get{ return ""}
+        set {
+            successLabel!.text = newValue
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func optionButtonTouched(_ sender: UIButton) {
+        if let buttonId = sender.restorationIdentifier, let givenAnswer = buttonToValueMap[buttonId] {
+            if model.isCorrect(givenAnswer) {
+                displaySuccess = "Correct"
+            } else {
+                displaySuccess = "Wrong"
+            }
+        }
+    }
+    
+    private func moveToNextQuestion() {
+        
     }
 
 
