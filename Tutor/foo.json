@@ -1,1 +1,47 @@
-bang
+{
+"0": {
+"id": 0,
+"english": "autumn",
+"german": "der Herbst",
+"nextQuestionTime": 1358263105338,
+    "gapHistory": [
+                   899955507,
+                   8433796674,
+                   8395328413,
+                   38536000000
+                   ],
+    "wrongAnswers": {}
+},
+  "1": {
+    "id": 1,
+    "english": "century",
+    "german": "das Jahrhundert",
+    "nextQuestionTime": 1358263108626,
+    "gapHistory": [
+      799955507,
+      2433796674,
+      7395328413,
+      31536000000
+    ],
+    "wrongAnswers": {}
+  },
+    "59": {
+        "id": 59,
+        "english": "because",
+        "german": "weil",
+        "nextQuestionTime": 1326716025112,
+        "gapHistory": [
+                       800214164,
+                       2433419412,
+                       7394500551,
+                       10000
+                       ],
+        "wrongAnswers": {
+            "59": {
+                "id": 194,
+                "when": 1326716015112,
+                "count": 1
+            }
+        }
+    }
+}

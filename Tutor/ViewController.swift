@@ -44,6 +44,8 @@ class ViewController: UIViewController {
         for button in buttons {
             button.setTitle(buttonToValueMap[button.restorationIdentifier!], for: UIControlState.normal)
         }
+        
+        model.loadModel()
     }
     
     var displaySuccess: String {

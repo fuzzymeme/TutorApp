@@ -26,12 +26,8 @@ class KnowledgeEntry: CustomStringConvertible {
         self.wrongAnswers = wrongAnswers
     }
     
-    public var description : String {
-        
-        var nextTimeString = "none"
-        if let nextTime = nextQuestionTime {
-            nextTimeString = String(nextTime)
-        }
+    public var description : String {        
+        let nextTimeString = (nextQuestionTime != nil) ? String(nextQuestionTime!) : "none"
         return "id: \(id), english: \(english), german: \(german), nextQuestionTime: \(nextTimeString), history: \(gapHistory), wrongAnswers: \(wrongAnswers)"
     }
 }
