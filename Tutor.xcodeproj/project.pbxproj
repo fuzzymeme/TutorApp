@@ -19,6 +19,7 @@
 		2B2AA39F1ED8B2B600CE542D /* KnowledgeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AA39E1ED8B2B600CE542D /* KnowledgeEntry.swift */; };
 		2B4F67431ED46A6700B00F3B /* QandAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F67421ED46A6700B00F3B /* QandAViewModel.swift */; };
 		2B4F67451ED46BA900B00F3B /* QandAGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F67441ED46BA900B00F3B /* QandAGroup.swift */; };
+		2BB3704A1EDB6B3500119CAE /* QandAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB370491EDB6B3500119CAE /* QandAView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2B2AA39E1ED8B2B600CE542D /* KnowledgeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnowledgeEntry.swift; sourceTree = "<group>"; };
 		2B4F67421ED46A6700B00F3B /* QandAViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAViewModel.swift; sourceTree = "<group>"; };
 		2B4F67441ED46BA900B00F3B /* QandAGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAGroup.swift; sourceTree = "<group>"; };
+		2BB370491EDB6B3500119CAE /* QandAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				2B17999D1ED4357400F74A39 /* AppDelegate.swift */,
 				2B17999F1ED4357400F74A39 /* ViewController.swift */,
 				2B1799A11ED4357400F74A39 /* Main.storyboard */,
+				2BB370491EDB6B3500119CAE /* QandAView.swift */,
 				2B1799A41ED4357400F74A39 /* Assets.xcassets */,
 				2B1799A61ED4357400F74A39 /* LaunchScreen.storyboard */,
 				2B1799A91ED4357400F74A39 /* Info.plist */,
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BB3704A1EDB6B3500119CAE /* QandAView.swift in Sources */,
 				2B2AA39F1ED8B2B600CE542D /* KnowledgeEntry.swift in Sources */,
 				2B4F67431ED46A6700B00F3B /* QandAViewModel.swift in Sources */,
 				2B4F67451ED46BA900B00F3B /* QandAGroup.swift in Sources */,

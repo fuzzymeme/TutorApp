@@ -111,8 +111,13 @@ class QandAViewModel {
         return nil
     }
     
+    
+    func entry(_ index: Int) -> KnowledgeEntry {
+        return entries[index]
+    }
+    
     func question() -> String {
-            return qnaGroup.question
+        return qnaGroup.question
     }
     
     func answer(index : Int!) -> String {

@@ -12,7 +12,7 @@ class KnowledgeEntry: CustomStringConvertible {
     
     public let id: Int
     public let english: String
-    private let german: String
+    public let german: String
     private var nextQuestionTime: Int?
     private var gapHistory: [Int]
     private var wrongAnswers: [WrongAnswer]

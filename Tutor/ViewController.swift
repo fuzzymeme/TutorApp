@@ -21,16 +21,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var optionButtonFour: UIButton!
     @IBOutlet weak var successLabel: UILabel!
     
-    @IBOutlet weak var questionLabel: UILabel!
-    
     @IBAction func nextButton(_ sender: UIButton) {
         print("Next Button pressed")
         moveToNextQuestion()
     }
     
+    @IBOutlet weak var qandAView: QandAView!
+    
     override func viewWillAppear(_ animated: Bool) {
-        
-        questionLabel.text = model.question()
         
         buttons.append(contentsOf:
             [optionButtonOne, optionButtonTwo, optionButtonThree, optionButtonFour]);
@@ -46,6 +44,8 @@ class ViewController: UIViewController {
         }
         
         model.loadModel()
+        
+        setAnswers()
     }
     
     var displaySuccess: String {
@@ -62,6 +62,18 @@ class ViewController: UIViewController {
             } else {
                 displaySuccess = "Wrong"
             }
+        }
+    }
+    
+    // MARK: - Logic
+    private func setAnswers() {
+        let entry = model.entry(0)
+        qandAView.question = "What is \"\(entry.german)\" in English?"
+        qandAView.option(1, setTo: entry.english)
+        
+        for i in 2...4 {
+            let otherEntry = model.entry(i)
+            qandAView.option(i, setTo: otherEntry.english)
         }
     }
     
