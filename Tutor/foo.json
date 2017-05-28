@@ -43,5 +43,37 @@
                 "count": 1
             }
         }
+    },
+    "60": {
+        "id": 60,
+        "english": "besides",
+        "german": "außerdem",
+        "nextQuestionTime": 1326715979544,
+        "gapHistory": [
+                       800215993,
+                       2433415671,
+                       7394457669,
+                       10000
+                       ],
+        "wrongAnswers": {
+            "60": {
+                "id": 115,
+                "when": 1326715969544,
+                "count": 1
+            }
+        }
+    },
+    "61": {
+        "id": 61,
+        "english": "but",
+        "german": "aber, sondern",
+        "nextQuestionTime": 1358251974096,
+        "gapHistory": [
+                       800215916,
+                       2433415455,
+                       7394465925,
+                       31536000000
+                       ],
+        "wrongAnswers": {}
     }
 }
