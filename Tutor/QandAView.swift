@@ -14,7 +14,10 @@ class QandAView: UIView {
     @IBOutlet weak var optionTwoButton: UIButton!
     @IBOutlet weak var optionThreeButton: UIButton!
     @IBOutlet weak var optionFourButton: UIButton!
+    @IBOutlet weak var skipNextButton: UIButton!
+    
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var successLabel: UILabel!
     
     
     func option(_ optionNumber: Int, setTo newValue: String) {
@@ -51,13 +54,4 @@ class QandAView: UIView {
         get { return questionLabel.text ?? ""}
         set { questionLabel.text = newValue}
     }
-
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    
-    
-
 }

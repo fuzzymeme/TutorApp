@@ -15,23 +15,12 @@ class ViewController: UIViewController {
     
     private let model = QandAViewModel()
     
-    @IBOutlet weak var optionButtonOne: UIButton!
-    @IBOutlet weak var optionButtonTwo: UIButton!
-    @IBOutlet weak var optionButtonThree: UIButton!
-    @IBOutlet weak var optionButtonFour: UIButton!
-    @IBOutlet weak var successLabel: UILabel!
-    
-    @IBAction func nextButton(_ sender: UIButton) {
-        print("Next Button pressed")
-        moveToNextQuestion()
-    }
-    
     @IBOutlet weak var qandAView: QandAView!
     
     override func viewWillAppear(_ animated: Bool) {
         
-        buttons.append(contentsOf:
-            [optionButtonOne, optionButtonTwo, optionButtonThree, optionButtonFour]);
+//        buttons.append(contentsOf:
+//            [optionButtonOne, optionButtonTwo, optionButtonThree, optionButtonFour]);
 
         var i = 0
         for button in buttons {
@@ -51,7 +40,7 @@ class ViewController: UIViewController {
     var displaySuccess: String {
         get{ return ""}
         set {
-            successLabel!.text = newValue
+//            successLabel!.text = newValue
         }
     }
 
@@ -67,18 +56,33 @@ class ViewController: UIViewController {
     
     // MARK: - Logic
     private func setAnswers() {
-        let entry = model.entry(0)
+        let entry = randomEntry()
         qandAView.question = "What is \"\(entry.german)\" in English?"
         qandAView.option(1, setTo: entry.english)
         
+        var alreadyChosenIds = [entry.id]
+        
         for i in 2...4 {
-            let otherEntry = model.entry(i)
+            let otherEntry = randomEntry(notIn: alreadyChosenIds)
             qandAView.option(i, setTo: otherEntry.english)
+            alreadyChosenIds.append(otherEntry.id)
         }
     }
     
     private func moveToNextQuestion() {
         
+    }
+
+    private func randomEntry(notIn alreadyChosenIds: [Int]) -> KnowledgeEntry {
+        var entry = model.entry(Int(arc4random_uniform(UInt32(model.count()))))
+        while(alreadyChosenIds.contains(entry.id)) {
+            entry = model.entry(Int(arc4random_uniform(UInt32(model.count()))))
+        }
+        return entry
+    }
+
+    private func randomEntry() -> KnowledgeEntry {
+        return model.entry(Int(arc4random_uniform(UInt32(model.count()))))
     }
 
 

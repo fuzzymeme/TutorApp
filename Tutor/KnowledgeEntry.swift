@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KnowledgeEntry: CustomStringConvertible {
+struct KnowledgeEntry: CustomStringConvertible {
     
     public let id: Int
     public let english: String

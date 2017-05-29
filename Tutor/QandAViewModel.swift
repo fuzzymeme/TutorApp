@@ -116,6 +116,10 @@ class QandAViewModel {
         return entries[index]
     }
     
+    func count() -> Int {
+        return entries.count
+    }
+    
     func question() -> String {
         return qnaGroup.question
     }
