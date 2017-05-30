@@ -19,6 +19,21 @@ class QandAView: UIView {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var successLabel: UILabel!
     
+    lazy private var buttonToValueMap: [UIButton: Int] = self.initializeButtonMap()
+    private var buttons = [UIButton]()
+    private var viewListener: ViewController?
+    
+    @IBAction func optionButtonTouched(_ sender: UIButton) {
+        viewListener?.handleButtonTouchedEvent(buttonIndex: buttonToValueMap[sender]!)
+    }
+    
+    func initializeButtonMap() -> [UIButton: Int] {
+        return [optionOneButton: 1, optionTwoButton: 2, optionThreeButton: 3, optionFourButton: 4]
+    }
+
+    func setDelegate(_ viewListener: ViewController) {
+        self.viewListener = viewListener
+    }
     
     func option(_ optionNumber: Int, setTo newValue: String) {
         switch optionNumber {
@@ -54,4 +69,16 @@ class QandAView: UIView {
         get { return questionLabel.text ?? ""}
         set { questionLabel.text = newValue}
     }
+    
+    var displaySuccess: String {
+        get{ return ""}
+        set {
+            successLabel!.text = newValue
+        }
+    }
+
+}
+
+protocol QandAViewListener {
+    func handleButtonTouchedEvent(buttonIndex: Int)
 }

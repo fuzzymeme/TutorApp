@@ -8,10 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-    private var buttonToValueMap = [String : String]()
-    private var buttons = [UIButton]()
+class ViewController: UIViewController, QandAViewListener {
     
     private let model = QandAViewModel()
     
@@ -19,53 +16,37 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        buttons.append(contentsOf:
-//            [optionButtonOne, optionButtonTwo, optionButtonThree, optionButtonFour]);
-
-        var i = 0
-        for button in buttons {
-            buttonToValueMap[button.restorationIdentifier!] = model.answer(index: i)
-            i += 1
-        }
-        
-        for button in buttons {
-            button.setTitle(buttonToValueMap[button.restorationIdentifier!], for: UIControlState.normal)
-        }
-        
         model.loadModel()
+        qandAView.setDelegate(self)
         
         setAnswers()
     }
     
-    var displaySuccess: String {
-        get{ return ""}
-        set {
-//            successLabel!.text = newValue
-        }
-    }
-
-    @IBAction func optionButtonTouched(_ sender: UIButton) {
-        if let buttonId = sender.restorationIdentifier, let givenAnswer = buttonToValueMap[buttonId] {
-            if model.isCorrect(givenAnswer) {
-                displaySuccess = "Correct"
-            } else {
-                displaySuccess = "Wrong"
-            }
+    func handleButtonTouchedEvent(buttonIndex: Int) {
+        print("Controller handles button touched event: \(buttonIndex)")
+        if model.isCorrect(buttonIndex) {
+            qandAView.displaySuccess = "Correct"
+        } else {
+            qandAView.displaySuccess = "Wrong"
         }
     }
     
     // MARK: - Logic
     private func setAnswers() {
         let entry = randomEntry()
+        let correctAnswerPosition = randomInt(limit: 5)
+        model.setIndexOfCorrectAnswer(newValue: correctAnswerPosition + 1)
         qandAView.question = "What is \"\(entry.german)\" in English?"
-        qandAView.option(1, setTo: entry.english)
+        qandAView.option(correctAnswerPosition  + 1, setTo: entry.english)
         
         var alreadyChosenIds = [entry.id]
         
-        for i in 2...4 {
-            let otherEntry = randomEntry(notIn: alreadyChosenIds)
-            qandAView.option(i, setTo: otherEntry.english)
-            alreadyChosenIds.append(otherEntry.id)
+        for i in 1...4 {
+            if i != correctAnswerPosition + 1 {
+                let otherEntry = randomEntry(notIn: alreadyChosenIds)
+                qandAView.option(i, setTo: otherEntry.english)
+                alreadyChosenIds.append(otherEntry.id)
+            }
         }
     }
     
@@ -74,17 +55,21 @@ class ViewController: UIViewController {
     }
 
     private func randomEntry(notIn alreadyChosenIds: [Int]) -> KnowledgeEntry {
-        var entry = model.entry(Int(arc4random_uniform(UInt32(model.count()))))
+        var entry = model.entry(randomInt(limit: model.count()))
         while(alreadyChosenIds.contains(entry.id)) {
-            entry = model.entry(Int(arc4random_uniform(UInt32(model.count()))))
+            entry = model.entry(randomInt(limit: model.count()))
         }
         return entry
     }
 
     private func randomEntry() -> KnowledgeEntry {
-        return model.entry(Int(arc4random_uniform(UInt32(model.count()))))
+        return model.entry(randomInt(limit: model.count()))
     }
 
+    // MARK: - Helpers
+    private func randomInt(limit: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(limit)))
+    }
 
 }
 

@@ -30,18 +30,30 @@
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionOneButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRd-vC-jMl">
                                                 <rect key="frame" x="0.0" y="0.0" width="164" height="30"/>
                                                 <state key="normal" title="One"/>
+                                                <connections>
+                                                    <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="v6s-Z1-H2A"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionTwoButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z79-gZ-wpG">
                                                 <rect key="frame" x="0.0" y="62" width="164" height="30"/>
                                                 <state key="normal" title="Two"/>
+                                                <connections>
+                                                    <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="tZs-X8-yep"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionThreeButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwg-pg-r2M">
                                                 <rect key="frame" x="0.0" y="124" width="164" height="30"/>
                                                 <state key="normal" title="Three"/>
+                                                <connections>
+                                                    <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="YD8-X6-Z4q"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionFourButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-Fj-NXL">
                                                 <rect key="frame" x="0.0" y="186" width="164" height="30"/>
                                                 <state key="normal" title="Four"/>
+                                                <connections>
+                                                    <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="Ivg-Gs-UNj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

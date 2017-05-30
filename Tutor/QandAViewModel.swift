@@ -13,6 +13,7 @@ class QandAViewModel {
     private let qnaGroup = QandAGroup()
     private var givenAnswer: String?
     private var entries = [KnowledgeEntry]()
+    private var indexOfCorrectAnswer: Int?
     
     func loadModel() {
         
@@ -132,7 +133,11 @@ class QandAViewModel {
         givenAnswer = answer
     }
     
-    func isCorrect(_ givenAnswer : String) -> Bool  {
-        return qnaGroup.answers[qnaGroup.indexOfCorrectAnswer] == givenAnswer
+    func setIndexOfCorrectAnswer(newValue: Int) {
+        indexOfCorrectAnswer = newValue
+    }
+    
+    func isCorrect(_ givenIndex : Int) -> Bool  {
+        return indexOfCorrectAnswer == givenIndex
     }
 }
