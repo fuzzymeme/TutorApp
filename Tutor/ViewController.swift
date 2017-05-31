@@ -34,15 +34,15 @@ class ViewController: UIViewController, QandAViewListener {
     // MARK: - Logic
     private func setAnswers() {
         let entry = randomEntry()
-        let correctAnswerPosition = randomInt(limit: 5)
-        model.setIndexOfCorrectAnswer(newValue: correctAnswerPosition + 1)
+        let correctAnswerPosition = randomInt(limit: 4)
+        model.setIndexOfCorrectAnswer(newValue: correctAnswerPosition)
         qandAView.question = "What is \"\(entry.german)\" in English?"
-        qandAView.option(correctAnswerPosition  + 1, setTo: entry.english)
+        qandAView.option(correctAnswerPosition, setTo: entry.english)
         
         var alreadyChosenIds = [entry.id]
         
-        for i in 1...4 {
-            if i != correctAnswerPosition + 1 {
+        for i in 0...3 {
+            if i != correctAnswerPosition {
                 let otherEntry = randomEntry(notIn: alreadyChosenIds)
                 qandAView.option(i, setTo: otherEntry.english)
                 alreadyChosenIds.append(otherEntry.id)

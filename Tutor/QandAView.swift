@@ -10,10 +10,10 @@ import UIKit
 
 class QandAView: UIView {
     
+    @IBOutlet weak var optionZeroButton: UIButton!
     @IBOutlet weak var optionOneButton: UIButton!
     @IBOutlet weak var optionTwoButton: UIButton!
     @IBOutlet weak var optionThreeButton: UIButton!
-    @IBOutlet weak var optionFourButton: UIButton!
     @IBOutlet weak var skipNextButton: UIButton!
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -28,7 +28,7 @@ class QandAView: UIView {
     }
     
     func initializeButtonMap() -> [UIButton: Int] {
-        return [optionOneButton: 1, optionTwoButton: 2, optionThreeButton: 3, optionFourButton: 4]
+        return [optionZeroButton: 0, optionOneButton: 1, optionTwoButton: 2, optionThreeButton: 3, ]
     }
 
     func setDelegate(_ viewListener: ViewController) {
@@ -37,12 +37,17 @@ class QandAView: UIView {
     
     func option(_ optionNumber: Int, setTo newValue: String) {
         switch optionNumber {
+        case 0: optionZero = newValue; break
         case 1: optionOne = newValue; break
         case 2: optionTwo = newValue; break
         case 3: optionThree = newValue; break
-        case 4: optionFour = newValue; break
         default:break
         }
+    }
+    
+    private var optionZero: String {
+        get { return optionZeroButton.currentTitle ?? ""}
+        set { optionZeroButton.setTitle(newValue, for: .normal)}
     }
     
     private var optionOne: String {
@@ -60,11 +65,6 @@ class QandAView: UIView {
         set { optionThreeButton.setTitle(newValue, for: .normal)}
     }
 
-    private var optionFour: String {
-        get { return optionFourButton.currentTitle ?? ""}
-        set { optionFourButton.setTitle(newValue, for: .normal)}
-    }
-
     var question: String {
         get { return questionLabel.text ?? ""}
         set { questionLabel.text = newValue}
@@ -76,7 +76,6 @@ class QandAView: UIView {
             successLabel!.text = newValue
         }
     }
-
 }
 
 protocol QandAViewListener {

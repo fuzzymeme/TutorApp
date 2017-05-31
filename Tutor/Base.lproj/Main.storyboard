@@ -27,30 +27,30 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="du0-ir-8tF">
                                         <rect key="frame" x="106" y="253" width="164" height="216"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionOneButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRd-vC-jMl">
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionOneButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRd-vC-jMl" userLabel="Option Zero Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="164" height="30"/>
-                                                <state key="normal" title="One"/>
+                                                <state key="normal" title="Zero"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="v6s-Z1-H2A"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionTwoButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z79-gZ-wpG">
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionTwoButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z79-gZ-wpG" userLabel="Option One Button">
                                                 <rect key="frame" x="0.0" y="62" width="164" height="30"/>
-                                                <state key="normal" title="Two"/>
+                                                <state key="normal" title="One"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="tZs-X8-yep"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionThreeButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwg-pg-r2M">
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionThreeButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwg-pg-r2M" userLabel="Option Two Button">
                                                 <rect key="frame" x="0.0" y="124" width="164" height="30"/>
-                                                <state key="normal" title="Three"/>
+                                                <state key="normal" title="Two"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="YD8-X6-Z4q"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionFourButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-Fj-NXL">
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionFourButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-Fj-NXL" userLabel="Option Three Button">
                                                 <rect key="frame" x="0.0" y="186" width="164" height="30"/>
-                                                <state key="normal" title="Four"/>
+                                                <state key="normal" title="Three"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="Ivg-Gs-UNj"/>
                                                 </connections>
@@ -90,10 +90,10 @@
                                     <constraint firstItem="du0-ir-8tF" firstAttribute="top" secondItem="ATv-Tw-cPF" secondAttribute="top" constant="253" id="oY0-Ag-QZr"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="optionFourButton" destination="4P2-Fj-NXL" id="S5v-vf-0Eh"/>
-                                    <outlet property="optionOneButton" destination="NRd-vC-jMl" id="tgc-iN-AQy"/>
-                                    <outlet property="optionThreeButton" destination="Rwg-pg-r2M" id="76G-tV-nhb"/>
-                                    <outlet property="optionTwoButton" destination="z79-gZ-wpG" id="97O-0T-DtQ"/>
+                                    <outlet property="optionOneButton" destination="z79-gZ-wpG" id="slZ-5a-eFj"/>
+                                    <outlet property="optionThreeButton" destination="4P2-Fj-NXL" id="Hlr-Jd-3Uo"/>
+                                    <outlet property="optionTwoButton" destination="Rwg-pg-r2M" id="FcH-pk-tbH"/>
+                                    <outlet property="optionZeroButton" destination="NRd-vC-jMl" id="YZp-a4-Fc5"/>
                                     <outlet property="questionLabel" destination="v0c-XL-vB7" id="A77-64-Zi4"/>
                                     <outlet property="skipNextButton" destination="7HH-qk-Xgk" id="Poo-AK-lGj"/>
                                     <outlet property="successLabel" destination="0A3-Yo-O1L" id="nsY-sL-69Y"/>
