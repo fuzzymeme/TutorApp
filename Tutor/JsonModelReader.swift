@@ -15,7 +15,6 @@ struct JsonModelReader {
         let filePath = Bundle.main.resourcePath!
         var entries = [Int: KnowledgeEntry]()
         
-        //        let data = try! String(contentsOfFile: filePath + "/basic_vocabulary_en2de.json", encoding: String.Encoding.utf8)
         let data = try! String(contentsOfFile: filePath + "/" + filename, encoding: String.Encoding.utf8)
         
         if let entriesDict = convertToDictionary(text: data) {
@@ -26,12 +25,7 @@ struct JsonModelReader {
             }
         }
         
-        for entry in entries {
-            print(entry)
-        }
-        
         return entries
-        
     }
     
     private func parseEntry(key: String, value: Any?) -> KnowledgeEntry? {
@@ -40,13 +34,11 @@ struct JsonModelReader {
         var wrongAnswers = [WrongAnswer]()
         
         if let entry = value as? [String: Any] {
-            if entry["gapHistory"] != nil,
-                let nonEmpty = entry["gapHistory"] as? [Int] {
+            if let nonEmpty = entry["gapHistory"] as? [Int] {
                 gapHistory = nonEmpty
             }
             
-            if entry["wrongAnswers"] != nil,
-                let nonEmpty = entry["wrongAnswers"] as? [String : Any] {
+            if let nonEmpty = entry["wrongAnswers"] as? [String : Any] {
                 wrongAnswers.append(contentsOf: parseWrongAnswers(wrongAnswerInput: nonEmpty))
             }
             

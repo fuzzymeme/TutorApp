@@ -19,15 +19,11 @@ class JsonModelReaderTests: XCTestCase {
     }
     
     func test_retrieveFromJsonFile_withSimpleFormatNoGapHistoryOrWrongsAnswers() {
-        let actual = reader.retrieveFromJsonFile(filename: "foo.json")
+        let actual = reader.retrieveFromJsonFile(filename: "test.json")
         XCTAssert(sampleKnowledgeEntries() == actual)
     }
 
     // MARK: - Helpers
-    private func sampleDictionaryString() -> String {
-        return "{\"0\": \"Alpha\", \"1\":\"Beta\"}"
-    }
-    
     private func sampleKnowledgeEntries() -> [Int: KnowledgeEntry] {
         let knowledgeEntry0 = KnowledgeEntry(id: 0, english: "autumn", german: "der Herbst", nextQuestionTime: 1358263105338, gapHistory: [899955507, 8433796674], wrongAnswers: [])
         let knowledgeEntry1 = KnowledgeEntry(id: 1, english: "century", german: "das Jahrhundert", nextQuestionTime: 1358263108626, gapHistory: [799955507, 2433796674], wrongAnswers: [])
@@ -38,18 +34,6 @@ class JsonModelReaderTests: XCTestCase {
         return [0: knowledgeEntry0, 1: knowledgeEntry1, 59: knowledgeEntry2, 60: knowledgeEntry3, 61: knowledgeEntry4]
     }
     
-    private func sampleEntryString() -> String {
-        return "{\n" +
-                "\"0\": {\n" +
-                    "\"id\": 0,\n" +
-                    "\"english\": \"autumn\",\n" +
-                    "\"german\": \"der Herbst\",\n" +
-                    "\"nextQuestionTime\": 1358263105338,\n" +
-                    "\"gapHistory\": [],\n" +
-                    "\"wrongAnswers\": {}\n" +
-                "\"}"
-    }
-
     static private func sampleWrongAnswer() -> [WrongAnswer] {
         return [WrongAnswer(id: 194, when: 1326716015112, count: 1)]
     }

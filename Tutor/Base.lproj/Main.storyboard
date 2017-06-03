@@ -25,10 +25,11 @@
                                 <rect key="frame" x="-1" y="0.0" width="376" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="du0-ir-8tF">
-                                        <rect key="frame" x="106" y="253" width="164" height="216"/>
+                                        <rect key="frame" x="106" y="255" width="164" height="216"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionOneButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRd-vC-jMl" userLabel="Option Zero Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="164" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Zero"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="v6s-Z1-H2A"/>
@@ -36,6 +37,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionTwoButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z79-gZ-wpG" userLabel="Option One Button">
                                                 <rect key="frame" x="0.0" y="62" width="164" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="One"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="tZs-X8-yep"/>
@@ -43,6 +45,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionThreeButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwg-pg-r2M" userLabel="Option Two Button">
                                                 <rect key="frame" x="0.0" y="124" width="164" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Two"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="YD8-X6-Z4q"/>
@@ -50,6 +53,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="optionFourButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4P2-Fj-NXL" userLabel="Option Three Button">
                                                 <rect key="frame" x="0.0" y="186" width="164" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Three"/>
                                                 <connections>
                                                     <action selector="optionButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="Ivg-Gs-UNj"/>
@@ -66,28 +70,42 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HH-qk-Xgk">
-                                        <rect key="frame" x="131" y="538" width="115" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HH-qk-Xgk">
+                                        <rect key="frame" x="144" y="543" width="88" height="48"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="fUn-ny-fUz"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Skip"/>
+                                        <connections>
+                                            <action selector="skipNextButtonTouched:" destination="ATv-Tw-cPF" eventType="touchUpInside" id="dXP-ee-Ngm"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A3-Yo-O1L">
-                                        <rect key="frame" x="126" y="155" width="120" height="47"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A3-Yo-O1L">
+                                        <rect key="frame" x="0.0" y="155" width="376" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Usx-t0-2D4"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.76982964409722221" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="du0-ir-8tF" firstAttribute="top" secondItem="0A3-Yo-O1L" secondAttribute="bottom" constant="52" id="11b-u9-jWx"/>
+                                    <constraint firstAttribute="trailing" secondItem="0A3-Yo-O1L" secondAttribute="trailing" id="5q4-2R-gE8"/>
                                     <constraint firstItem="v0c-XL-vB7" firstAttribute="leading" secondItem="ATv-Tw-cPF" secondAttribute="leading" constant="18" id="Hj7-J5-M8h"/>
+                                    <constraint firstItem="0A3-Yo-O1L" firstAttribute="leading" secondItem="ATv-Tw-cPF" secondAttribute="leading" id="Q4d-6y-hcW"/>
                                     <constraint firstItem="du0-ir-8tF" firstAttribute="centerX" secondItem="ATv-Tw-cPF" secondAttribute="centerX" id="QDi-fg-2hQ"/>
+                                    <constraint firstItem="0A3-Yo-O1L" firstAttribute="top" secondItem="v0c-XL-vB7" secondAttribute="bottom" constant="8" id="VI1-ZX-o1W"/>
+                                    <constraint firstItem="7HH-qk-Xgk" firstAttribute="centerX" secondItem="ATv-Tw-cPF" secondAttribute="centerX" id="VZB-JH-vDP"/>
                                     <constraint firstItem="v0c-XL-vB7" firstAttribute="top" secondItem="ATv-Tw-cPF" secondAttribute="top" constant="83" id="f8t-Y7-zU9"/>
                                     <constraint firstAttribute="trailing" secondItem="v0c-XL-vB7" secondAttribute="trailing" constant="18" id="kF6-GY-kSe"/>
                                     <constraint firstItem="du0-ir-8tF" firstAttribute="leading" secondItem="ATv-Tw-cPF" secondAttribute="leading" constant="106" id="mv6-p3-Via"/>
-                                    <constraint firstItem="du0-ir-8tF" firstAttribute="top" secondItem="ATv-Tw-cPF" secondAttribute="top" constant="253" id="oY0-Ag-QZr"/>
+                                    <constraint firstItem="7HH-qk-Xgk" firstAttribute="top" secondItem="du0-ir-8tF" secondAttribute="bottom" constant="72" id="r9P-6x-az2"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="optionOneButton" destination="z79-gZ-wpG" id="slZ-5a-eFj"/>

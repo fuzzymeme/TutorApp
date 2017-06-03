@@ -19,50 +19,47 @@ class QandAView: UIView {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var successLabel: UILabel!
     
-    lazy private var buttonToValueMap: [UIButton: Int] = self.initializeButtonMap()
+    lazy private var buttonToIndexMap: [UIButton: Int] = self.initializeButtonMap()
     private var buttons = [UIButton]()
     private var viewListener: ViewController?
     
     @IBAction func optionButtonTouched(_ sender: UIButton) {
-        viewListener?.handleButtonTouchedEvent(buttonIndex: buttonToValueMap[sender]!)
+        viewListener?.handleButtonTouchedEvent(buttonIndex: buttonToIndexMap[sender]!)
+    }
+    
+    @IBAction func skipNextButtonTouched(_ sender: UIButton) {
+        viewListener?.handleSkipButtonTouchedEvent()
     }
     
     func initializeButtonMap() -> [UIButton: Int] {
-        return [optionZeroButton: 0, optionOneButton: 1, optionTwoButton: 2, optionThreeButton: 3, ]
+        return [optionZeroButton: 0, optionOneButton: 1, optionTwoButton: 2, optionThreeButton: 3]
     }
 
     func setDelegate(_ viewListener: ViewController) {
         self.viewListener = viewListener
     }
     
-    func option(_ optionNumber: Int, setTo newValue: String) {
-        switch optionNumber {
-        case 0: optionZero = newValue; break
-        case 1: optionOne = newValue; break
-        case 2: optionTwo = newValue; break
-        case 3: optionThree = newValue; break
-        default:break
+    func setBackground(color newBackgroundColor: UIColor) {
+        self.backgroundColor = newBackgroundColor
+    }
+    
+    func setButtonsBackground(color newBackgroundColor: UIColor) {
+        for button in buttonToIndexMap.keys {
+            button.backgroundColor = newBackgroundColor
         }
     }
     
-    private var optionZero: String {
-        get { return optionZeroButton.currentTitle ?? ""}
-        set { optionZeroButton.setTitle(newValue, for: .normal)}
+    func setSkipNextButtonBackground(color newBackgroundColor: UIColor) {
+        skipNextButton.backgroundColor = newBackgroundColor
     }
     
-    private var optionOne: String {
-        get { return optionOneButton.currentTitle ?? ""}
-        set { optionOneButton.setTitle(newValue, for: .normal)}
+    func setSkipNextButtonText(newText: String) {
+        skipNextButton.setTitle(newText, for: .normal)
     }
-
-    private var optionTwo: String {
-        get { return optionTwoButton.currentTitle ?? ""}
-        set { optionTwoButton.setTitle(newValue, for: .normal)}
-    }
-
-    private var optionThree: String {
-        get { return optionThreeButton.currentTitle ?? ""}
-        set { optionThreeButton.setTitle(newValue, for: .normal)}
+    
+    func option(atIndex optionNumber: Int, setTo newValue: String) {
+        let selectedButton = buttonWithIndex(optionNumber)
+        selectedButton?.setTitle(newValue, for: .normal)
     }
 
     var question: String {
@@ -70,11 +67,21 @@ class QandAView: UIView {
         set { questionLabel.text = newValue}
     }
     
-    var displaySuccess: String {
-        get{ return ""}
+    var displaySuccess: Bool {
+        get{ return false}
         set {
-            successLabel!.text = newValue
+            if newValue {
+                successLabel!.text = "Correct"
+                successLabel!.backgroundColor = UIColor.green
+            } else {
+                successLabel!.text = "Wrong"
+                successLabel!.backgroundColor = UIColor.red
+            }
         }
+    }
+    
+    private func buttonWithIndex(_ index: Int) -> UIButton? {
+        return buttonToIndexMap.keys.first(where: {[weak self] in self?.buttonToIndexMap[$0] == index})
     }
 }
 

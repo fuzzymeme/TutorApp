@@ -2,11 +2,12 @@
 //  TwoWayMapTests.swift
 //  Tutor
 //
-//  Created by Richard Smith on 01/06/2017.
+//  Created by Fuzzymeme on 01/06/2017.
 //  Copyright © 2017 Fuzzymeme. All rights reserved.
 //
 
 import XCTest
+@testable import Tutor
 
 class TwoWayMapTests: XCTestCase {
     
@@ -15,21 +16,33 @@ class TwoWayMapTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func test_StringToIntMap_ForSettingAndGettingForwardAndReverse() {
+        let stringToIntMap = TwoWayMap<String, Int>(["A": 0, "B": 1, "C": 45])
+        
+        XCTAssertEqual(0, stringToIntMap.get("A"))
+        XCTAssertEqual(1, stringToIntMap.get("B"))
+        XCTAssertEqual(45, stringToIntMap.get("C"))
+        
+        XCTAssertEqual("A", stringToIntMap.getReverse(0))
+        XCTAssertEqual("B", stringToIntMap.getReverse(1))
+        XCTAssertEqual("C", stringToIntMap.getReverse(45))
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_StringToIntMap_ForKeys() {
+        let stringToIntMap = TwoWayMap<String, Int>(["A": 0, "B": 1, "C": 45])
+
+        XCTAssertEqual(3, stringToIntMap.keys.count)
+        XCTAssert(stringToIntMap.keys.contains("A"))
+        XCTAssert(stringToIntMap.keys.contains("B"))
+        XCTAssert(stringToIntMap.keys.contains("C"))
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_StringToIntMap_ForValues() {
+        let stringToIntMap = TwoWayMap<String, Int>(["A": 0, "B": 1, "C": 45])
+        
+        XCTAssertEqual(3, stringToIntMap.values.count)
+        XCTAssert(stringToIntMap.values.contains(0))
+        XCTAssert(stringToIntMap.values.contains(1))
+        XCTAssert(stringToIntMap.values.contains(45))
     }
-    
 }

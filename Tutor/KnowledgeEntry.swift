@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KnowledgeEntry: CustomStringConvertible {
+struct KnowledgeEntry: CustomStringConvertible, Equatable {
     
     public let id: Int
     public let english: String
@@ -26,13 +26,23 @@ struct KnowledgeEntry: CustomStringConvertible {
         self.wrongAnswers = wrongAnswers
     }
     
-    public var description : String {        
+    public var description : String {
         let nextTimeString = (nextQuestionTime != nil) ? String(nextQuestionTime!) : "none"
         return "id: \(id), english: \(english), german: \(german), nextQuestionTime: \(nextTimeString), history: \(gapHistory), wrongAnswers: \(wrongAnswers)"
     }
+    
+    public static func ==(lhs: KnowledgeEntry, rhs: KnowledgeEntry) -> Bool {
+        return
+            lhs.id == rhs.id &&
+            lhs.english == rhs.english &&
+            lhs.german == rhs.german &&
+            lhs.nextQuestionTime == rhs.nextQuestionTime &&
+            lhs.gapHistory == rhs.gapHistory &&
+            lhs.wrongAnswers == rhs.wrongAnswers
+    }
 }
 
-struct WrongAnswer: CustomStringConvertible {
+struct WrongAnswer: CustomStringConvertible, Equatable {
     
     public let id: Int
     public let when: Int
@@ -40,5 +50,12 @@ struct WrongAnswer: CustomStringConvertible {
     
     public var description : String {
         return "id: \(id), when: \(when), count: \(count)"
+    }
+    
+    public static func ==(lhs: WrongAnswer, rhs: WrongAnswer) -> Bool {
+        return
+            lhs.id == rhs.id &&
+            lhs.when == rhs.when &&
+            lhs.count == rhs.count
     }
 }

@@ -11,49 +11,61 @@ import UIKit
 class ViewController: UIViewController, QandAViewListener {
     
     private let model = QandAViewModel()
+    private let questionTemplate = "What is $german in English?"
     
     @IBOutlet weak var qandAView: QandAView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool) {        
         model.loadModel()
         qandAView.setDelegate(self)
-        
+        setupView()
         setAnswers()
     }
     
+    private func setupView() {
+        qandAView.setBackground(color: UIColor(red: 0.0, green: 0.7, blue: 0.0, alpha: 1.0))
+        qandAView.setButtonsBackground(color: UIColor.white)
+        qandAView.successLabel.isHidden = true
+        qandAView.setSkipNextButtonBackground(color: UIColor.gray)
+    }
+    
     func handleButtonTouchedEvent(buttonIndex: Int) {
-        print("Controller handles button touched event: \(buttonIndex)")
+        qandAView.setSkipNextButtonText(newText: "Next")
+        qandAView.successLabel.isHidden = false
+
         if model.isCorrect(buttonIndex) {
-            qandAView.displaySuccess = "Correct"
+            qandAView.displaySuccess = true
         } else {
-            qandAView.displaySuccess = "Wrong"
+            qandAView.displaySuccess = false
         }
+    }
+    
+    func handleSkipButtonTouchedEvent() {
+        setAnswers()
     }
     
     // MARK: - Logic
     private func setAnswers() {
         let entry = randomEntry()
         let correctAnswerPosition = randomInt(limit: 4)
-        model.setIndexOfCorrectAnswer(newValue: correctAnswerPosition)
-        qandAView.question = "What is \"\(entry.german)\" in English?"
-        qandAView.option(correctAnswerPosition, setTo: entry.english)
+        model.setIndexOfCorrectAnswer(newValue: correctAnswerPosition)        
+        qandAView.question = Utils.completeTemplate(questionTemplate, replace: "$german", with: entry.german)
+        qandAView.option(atIndex: correctAnswerPosition, setTo: entry.english)
         
         var alreadyChosenIds = [entry.id]
         
         for i in 0...3 {
             if i != correctAnswerPosition {
                 let otherEntry = randomEntry(notIn: alreadyChosenIds)
-                qandAView.option(i, setTo: otherEntry.english)
+                qandAView.option(atIndex: i, setTo: otherEntry.english)
                 alreadyChosenIds.append(otherEntry.id)
             }
         }
+        
+        qandAView.setSkipNextButtonText(newText: "Skip")
+        qandAView.successLabel.isHidden = true
     }
     
-    private func moveToNextQuestion() {
-        
-    }
-
     private func randomEntry(notIn alreadyChosenIds: [Int]) -> KnowledgeEntry {
         var entry = model.entry(randomInt(limit: model.count()))
         while(alreadyChosenIds.contains(entry.id)) {
