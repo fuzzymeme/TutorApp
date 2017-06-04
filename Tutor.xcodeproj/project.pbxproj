@@ -25,6 +25,7 @@
 		2BC5F7451EE0250200F5172D /* TwoWayMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5F7441EE0250200F5172D /* TwoWayMap.swift */; };
 		2BC5F7471EE02C1400F5172D /* TwoWayMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5F7461EE02C1400F5172D /* TwoWayMapTests.swift */; };
 		2BC5F7491EE1ED9200F5172D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5F7481EE1ED9200F5172D /* Utils.swift */; };
+		2BF5A4681EE4A5DD002E53C6 /* AugmentedSpacedRepetitionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF5A4671EE4A5DD002E53C6 /* AugmentedSpacedRepetitionStrategy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		2BC5F7441EE0250200F5172D /* TwoWayMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayMap.swift; sourceTree = "<group>"; };
 		2BC5F7461EE02C1400F5172D /* TwoWayMapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayMapTests.swift; sourceTree = "<group>"; };
 		2BC5F7481EE1ED9200F5172D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2BF5A4671EE4A5DD002E53C6 /* AugmentedSpacedRepetitionStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedSpacedRepetitionStrategy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				2B56C3C41EDF34DD00444913 /* JsonModelReader.swift */,
 				2BC5F7441EE0250200F5172D /* TwoWayMap.swift */,
 				2BC5F7481EE1ED9200F5172D /* Utils.swift */,
+				2BF5A4671EE4A5DD002E53C6 /* AugmentedSpacedRepetitionStrategy.swift */,
 			);
 			path = Tutor;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				2B2AA39F1ED8B2B600CE542D /* KnowledgeEntry.swift in Sources */,
 				2B4F67431ED46A6700B00F3B /* QandAViewModel.swift in Sources */,
 				2BC5F7451EE0250200F5172D /* TwoWayMap.swift in Sources */,
+				2BF5A4681EE4A5DD002E53C6 /* AugmentedSpacedRepetitionStrategy.swift in Sources */,
 				2B4F67451ED46BA900B00F3B /* QandAGroup.swift in Sources */,
 				2B56C3C51EDF34DD00444913 /* JsonModelReader.swift in Sources */,
 				2B1799A01ED4357400F74A39 /* ViewController.swift in Sources */,
