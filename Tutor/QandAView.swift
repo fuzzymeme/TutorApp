@@ -57,9 +57,17 @@ class QandAView: UIView {
         skipNextButton.setTitle(newText, for: .normal)
     }
     
-    func option(atIndex optionNumber: Int, setTo newValue: String) {
+    func setOption(atIndex optionNumber: Int, setTo newValue: String) {
         let selectedButton = buttonWithIndex(optionNumber)
         selectedButton?.setTitle(newValue, for: .normal)
+    }
+    
+    func setAnswers(_ answers: [String]) {
+        var index = 0
+        for answer in answers {
+            setOption(atIndex: index, setTo: answer)
+            index += 1
+        }
     }
 
     var question: String {

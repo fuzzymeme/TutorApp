@@ -10,19 +10,37 @@ import Foundation
 
 class QandAViewModel {
     
+    private var strategy = AugmentedSpacedRepetitionStrategy()
     private var entries = [Int: KnowledgeEntry]()
-    private var indexOfCorrectAnswer: Int? 
+    private var currentQAndA: QandAGroup?
     
     func loadModel() {        
         let modelReader = JsonModelReader()
         entries = modelReader.retrieveFromJsonFile(filename: "test.json")
     }
     
+    func qAndASet() -> QandAGroup? {
+        currentQAndA = strategy.qAndASet(from: self)
+        return currentQAndA
+    }
+    
+    func randomEntry(notIn alreadyChosenIds: [Int]) -> KnowledgeEntry {
+        var randomEntry = entryAt(index: Utils.randomInt(limit: count()))
+        while(alreadyChosenIds.contains(randomEntry.id)) {
+            randomEntry = entryAt(index: Utils.randomInt(limit:count()))
+        }
+        return randomEntry
+    }
+    
+    func randomEntry() -> KnowledgeEntry {
+        return entryAt(index: Utils.randomInt(limit: count()))
+    }
+    
     func addEntry(_ newEntry: KnowledgeEntry) {
         entries[newEntry.id] = newEntry
     }
     
-    func entry(_ index: Int) -> KnowledgeEntry {
+    func entryAt(index: Int) -> KnowledgeEntry {
         return entries[Array(entries.keys)[index]]!
     }
     
@@ -30,11 +48,7 @@ class QandAViewModel {
         return entries.count
     }
     
-    func setIndexOfCorrectAnswer(newValue: Int) {
-        indexOfCorrectAnswer = newValue
-    }
-    
     func isCorrect(_ givenIndex : Int) -> Bool  {
-        return indexOfCorrectAnswer == givenIndex
+        return currentQAndA?.indexOfCorrectAnswer == givenIndex
     }
 }

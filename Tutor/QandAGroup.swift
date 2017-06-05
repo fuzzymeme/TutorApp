@@ -8,10 +8,9 @@
 
 import Foundation
 
-class QandAGroup {
+struct QandAGroup {
     
-    let question = "What is Hubst in English?"
-    var answers = ["Autum", "Cat", "Dog", "Soup"]
-    var indexOfCorrectAnswer = 0
-
+    let question: String
+    let answers: [String]
+    let indexOfCorrectAnswer: Int
 }

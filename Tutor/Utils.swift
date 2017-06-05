@@ -13,6 +13,10 @@ class Utils {
     static func completeTemplate(_ template: String, replace target: String, with newString: String) -> String {
         return template.replace(target, with: newString)
     }
+    
+    static func randomInt(limit: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(limit)))
+    }
 }
 
 extension String {
