@@ -26,6 +26,11 @@ struct KnowledgeEntry: CustomStringConvertible, Equatable {
         self.wrongAnswers = wrongAnswers
     }
     
+    mutating func addWrongAnswer(_ newWrongAnswerEntry: KnowledgeEntry) {
+        let newWrongAnswer = WrongAnswer(id: newWrongAnswerEntry.id, when: 0, count: 1024)  // TODO fill in the correct details
+        wrongAnswers.append(newWrongAnswer)
+    }
+    
     public var description : String {
         let nextTimeString = (nextQuestionTime != nil) ? String(nextQuestionTime!) : "none"
         return "id: \(id), english: \(english), german: \(german), nextQuestionTime: \(nextTimeString), history: \(gapHistory), wrongAnswers: \(wrongAnswers)"

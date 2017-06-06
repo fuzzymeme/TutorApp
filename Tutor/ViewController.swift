@@ -37,6 +37,7 @@ class ViewController: UIViewController, QandAViewListener {
         } else {
             qandAView.displaySuccess = false
         }
+        model.recordAnswerGiven(answerIndex: buttonIndex)
     }
     
     func handleSkipButtonTouchedEvent() {

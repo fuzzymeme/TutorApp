@@ -10,25 +10,40 @@ import Foundation
 
 class AugmentedSpacedRepetitionStrategy {
     
+    private var currentQuestionEntry: KnowledgeEntry?
+    private var indexToEntryDict = [Int: KnowledgeEntry]()
+    private var indexOfCorrectAnswer: Int?
     
     func qAndASet(from model: QandAViewModel) -> QandAGroup {
         
-        let correctEntry = model.randomEntry()
-        let indexOfCorrectAnswer = Utils.randomInt(limit: 4)
-        let question = Utils.completeTemplate(ResourceStrings.questionTemplate, replace: "$german", with: correctEntry.german)
         var answers = [String]()
-        var alreadyChosenIds = [correctEntry.id]
-        
-        for i in 0...3 {
-            if i != indexOfCorrectAnswer {
-                let otherEntry = model.randomEntry(notIn: alreadyChosenIds)
-                answers.append(otherEntry.english)
-                alreadyChosenIds.append(otherEntry.id)
-            } else {
-                answers.append(correctEntry.english)
+        var question = ""
+        indexOfCorrectAnswer = Utils.randomInt(limit: 4)
+        if var currentQuestionEntry = currentQuestionEntry, let indexOfCorrectAnswer = indexOfCorrectAnswer {
+            currentQuestionEntry = model.randomEntry()
+            question = Utils.completeTemplate(ResourceStrings.questionTemplate, replace: "$german", with: currentQuestionEntry.german)
+            var alreadyChosenIds = [currentQuestionEntry.id]
+            
+            for i in 0...3 {
+                if i != indexOfCorrectAnswer {
+                    let otherEntry = model.randomEntry(notIn: alreadyChosenIds)
+                    answers.append(otherEntry.english)
+                    alreadyChosenIds.append(otherEntry.id)
+                    indexToEntryDict[i] = otherEntry
+                } else {
+                    answers.append(currentQuestionEntry.english)
+                    indexToEntryDict[i] = currentQuestionEntry
+                }
             }
         }
-        
-        return QandAGroup(question: question, answers: answers,  indexOfCorrectAnswer: indexOfCorrectAnswer)
+            
+            
+        return QandAGroup(question: question, answers: answers,  indexOfCorrectAnswer: indexOfCorrectAnswer!)
+    }
+    
+    func recordAnswerGiven(_ answerIndex: Int) {
+        if answerIndex == indexOfCorrectAnswer! {
+            currentQuestionEntry.
+        }
     }
 }

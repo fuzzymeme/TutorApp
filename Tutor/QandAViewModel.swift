@@ -51,4 +51,8 @@ class QandAViewModel {
     func isCorrect(_ givenIndex : Int) -> Bool  {
         return currentQAndA?.indexOfCorrectAnswer == givenIndex
     }
+    
+    func recordAnswerGiven(answerIndex: Int) {
+        strategy.recordAnswerGiven(answerIndex)
+    }
 }
