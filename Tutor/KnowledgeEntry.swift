@@ -27,8 +27,34 @@ struct KnowledgeEntry: CustomStringConvertible, Equatable {
     }
     
     mutating func addWrongAnswer(_ newWrongAnswerEntry: KnowledgeEntry) {
-        let newWrongAnswer = WrongAnswer(id: newWrongAnswerEntry.id, when: 0, count: 1024)  // TODO fill in the correct details
-        wrongAnswers.append(newWrongAnswer)
+        if hasHadWrongAnswerBefore(givenAnswer: newWrongAnswerEntry) {
+            print("Had that wrong answer before")
+            if let previousWrongAnswer = wrongAnswers.filter({$0.id == newWrongAnswerEntry.id}).first {
+                print("Found \(previousWrongAnswer)")
+                let newWrongAnswer = WrongAnswer(id: newWrongAnswerEntry.id, when: Utils.getCurrentMillis(), count: previousWrongAnswer.count + 1)
+                removeWrongAnswer(previousWrongAnswer)
+                wrongAnswers.append(newWrongAnswer)
+            }
+        } else {
+            print("New wrong answer")
+            let newWrongAnswer = WrongAnswer(id: newWrongAnswerEntry.id, when: Utils.getCurrentMillis(), count: 1)
+            wrongAnswers.append(newWrongAnswer)
+        }
+    }
+    
+    public func hasHadWrongAnswerBefore(givenAnswer: KnowledgeEntry) -> Bool {
+        for previousWrongAnswer in wrongAnswers {
+            if previousWrongAnswer.id == givenAnswer.id {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public mutating func removeWrongAnswer(_ wrongAnswer: WrongAnswer) {
+        if let index = wrongAnswers.index(of: wrongAnswer) {
+            wrongAnswers.remove(at: index)
+        }
     }
     
     public var description : String {

@@ -17,6 +17,10 @@ class Utils {
     static func randomInt(limit: Int) -> Int {
         return Int(arc4random_uniform(UInt32(limit)))
     }
+    
+    static func getCurrentMillis()-> Int {
+        return Int(Date().timeIntervalSince1970 * 1000)
+    }
 }
 
 extension String {

@@ -19,13 +19,15 @@ class AugmentedSpacedRepetitionStrategy {
         var answers = [String]()
         var question = ""
         indexOfCorrectAnswer = Utils.randomInt(limit: 4)
-        if var currentQuestionEntry = currentQuestionEntry, let indexOfCorrectAnswer = indexOfCorrectAnswer {
-            currentQuestionEntry = model.randomEntry()
+        print("indexOfCorrectAnswer \(indexOfCorrectAnswer!)")
+        currentQuestionEntry = model.randomEntry()
+        if let currentQuestionEntry = currentQuestionEntry,
+            let correctIndex = indexOfCorrectAnswer {
             question = Utils.completeTemplate(ResourceStrings.questionTemplate, replace: "$german", with: currentQuestionEntry.german)
             var alreadyChosenIds = [currentQuestionEntry.id]
             
             for i in 0...3 {
-                if i != indexOfCorrectAnswer {
+                if i != correctIndex {
                     let otherEntry = model.randomEntry(notIn: alreadyChosenIds)
                     answers.append(otherEntry.english)
                     alreadyChosenIds.append(otherEntry.id)
@@ -36,14 +38,15 @@ class AugmentedSpacedRepetitionStrategy {
                 }
             }
         }
-            
-            
+
         return QandAGroup(question: question, answers: answers,  indexOfCorrectAnswer: indexOfCorrectAnswer!)
     }
     
     func recordAnswerGiven(_ answerIndex: Int) {
-        if answerIndex == indexOfCorrectAnswer! {
-            currentQuestionEntry.
+        if let indexOfCorrectAnswer = indexOfCorrectAnswer {
+            if answerIndex != indexOfCorrectAnswer {
+                currentQuestionEntry?.addWrongAnswer(indexToEntryDict[answerIndex]!)
+            }
         }
     }
 }
