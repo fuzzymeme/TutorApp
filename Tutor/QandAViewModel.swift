@@ -23,7 +23,7 @@ class QandAViewModel {
         currentQAndA = strategy.qAndASet(from: self)
         return currentQAndA
     }
-    
+        
     func randomEntry(notIn alreadyChosenIds: [Int]) -> KnowledgeEntry {
         var randomEntry = entryAt(index: Utils.randomInt(limit: count()))
         while(alreadyChosenIds.contains(randomEntry.id)) {

@@ -19,6 +19,17 @@ class ViewController: UIViewController, QandAViewListener {
         qandAView.setDelegate(self)
         setupView()
         setAnswers()
+        
+        let app = UIApplication.shared
+        
+        //Register for the applicationWillResignActive anywhere in your app.
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.applicationWillResignActive(notification:)), name: NSNotification.Name.UIApplicationWillResignActive, object: app)
+    }
+    
+    func applicationWillResignActive(notification: NSNotification) {
+        print("applicationWillResignActive")
+        let writer = JsonModelWriter()
+        writer.saveToJsonFile(model)
     }
     
     private func setupView() {
