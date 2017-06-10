@@ -28,9 +28,9 @@ class JsonModelWriter {
         }
     }
     
-    private func modelAsJsonable(_ model: QandAViewModel) -> [String: [String: String]] {
+    private func modelAsJsonable(_ model: QandAViewModel) -> [String: [String: Any]] {
         
-        var json = [String: [String: String]]()
+        var json = [String: [String: Any]]()
         for i in 0..<model.count() {
             let entry = model.entryAt(index: i)
             let entryIdString = String(entry.id)
@@ -40,12 +40,31 @@ class JsonModelWriter {
         return json
     }
     
-    private func entryAsJsonable(_ entry: KnowledgeEntry) -> [String: String] {
+    private func entryAsJsonable(_ entry: KnowledgeEntry) -> [String: Any] {
         
-        var json = [String: String]()
+        var json = [String: Any]()
         json["id"] = String(entry.id)
         json["english"] = entry.english
+        json["german"] = entry.german
+        json["nextQuestionTime"] = entry.getNextQuestionTime() ?? 0
+        json["gapHistory"] = entry.getGapHistory()
+        json["wrongAnswers"] = wrongAnswersAsJsonable(entry.getWrongAnswers())
         
         return json
+    }
+    
+    private func wrongAnswersAsJsonable(_ wrongAnswers: [WrongAnswer]) -> [[String: Int]] {
+        
+        var wrongAnswersAsJson = [[String: Int]]()
+        
+        for wrongAnswer in wrongAnswers {
+            var json = [String: Int]()
+            json["id"] = wrongAnswer.id
+            json["when"] = wrongAnswer.when
+            json["count"] = wrongAnswer.count
+            wrongAnswersAsJson.append(json)
+        }
+        
+        return wrongAnswersAsJson
     }
 }

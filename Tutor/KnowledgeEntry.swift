@@ -57,6 +57,18 @@ struct KnowledgeEntry: CustomStringConvertible, Equatable {
         }
     }
     
+    public func getNextQuestionTime() -> Int? {
+        return nextQuestionTime
+    }
+    
+    public func getGapHistory() -> [Int] {
+        return gapHistory
+    }
+    
+    public func getWrongAnswers() -> [WrongAnswer] {
+        return wrongAnswers
+    }
+    
     public var description : String {
         let nextTimeString = (nextQuestionTime != nil) ? String(nextQuestionTime!) : "none"
         return "id: \(id), english: \(english), german: \(german), nextQuestionTime: \(nextTimeString), history: \(gapHistory), wrongAnswers: \(wrongAnswers)"
