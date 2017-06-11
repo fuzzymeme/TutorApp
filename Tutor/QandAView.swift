@@ -39,6 +39,13 @@ class QandAView: UIView {
         self.viewListener = viewListener
     }
     
+    func setButtonStyle() {
+        for button in buttonToIndexMap.keys {
+            button.layer.cornerRadius = 6
+            button.layer.borderWidth = 0
+        }
+    }
+    
     func setBackground(color newBackgroundColor: UIColor) {
         self.backgroundColor = newBackgroundColor
     }
@@ -52,7 +59,12 @@ class QandAView: UIView {
     func setSkipNextButtonBackground(color newBackgroundColor: UIColor) {
         skipNextButton.backgroundColor = newBackgroundColor
     }
-    
+
+    func setSkipStyle() {
+        skipNextButton.layer.cornerRadius = 6
+        skipNextButton.layer.borderWidth = 0
+    }
+
     func setSkipNextButtonText(newText: String) {
         skipNextButton.setTitle(newText, for: .normal)
     }

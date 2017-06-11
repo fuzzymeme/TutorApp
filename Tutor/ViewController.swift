@@ -35,8 +35,10 @@ class ViewController: UIViewController, QandAViewListener {
     private func setupView() {
         qandAView.setBackground(color: UIColor(red: 0.0, green: 0.7, blue: 0.0, alpha: 1.0))
         qandAView.setButtonsBackground(color: UIColor.white)
+        qandAView.setButtonStyle()
         qandAView.successLabel.isHidden = true
         qandAView.setSkipNextButtonBackground(color: UIColor.gray)
+        qandAView.setSkipStyle()
     }
     
     func handleButtonTouchedEvent(buttonIndex: Int) {
