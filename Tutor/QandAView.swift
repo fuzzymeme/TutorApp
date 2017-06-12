@@ -39,7 +39,7 @@ class QandAView: UIView {
         self.viewListener = viewListener
     }
     
-    func setButtonStyle() {
+    func setButtonStyleRounded() {
         for button in buttonToIndexMap.keys {
             button.layer.cornerRadius = 6
             button.layer.borderWidth = 0
@@ -60,7 +60,7 @@ class QandAView: UIView {
         skipNextButton.backgroundColor = newBackgroundColor
     }
 
-    func setSkipStyle() {
+    func setSkipButtonStyleRounded() {
         skipNextButton.layer.cornerRadius = 6
         skipNextButton.layer.borderWidth = 0
     }

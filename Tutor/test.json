@@ -1,15 +1,17 @@
 {
-"0": {
-"id": 0,
-"english": "autumn",
-"german": "der Herbst",
-"nextQuestionTime": 1358263105338,
+  "0": {
+    "id": 0,
+    "english": "autumn",
+    "german": "der Herbst",
+    "nextQuestionTime": 1358263105338,
     "gapHistory": [
-                   899955507,
-                   8433796674
-                   ],
-    "wrongAnswers": {}
-},
+      797679086,
+      2437408407,
+      7148207265,
+      31536000000
+    ],
+    "wrongAnswers": []
+  },
   "1": {
     "id": 1,
     "english": "century",
@@ -17,47 +19,62 @@
     "nextQuestionTime": 1358263108626,
     "gapHistory": [
       799955507,
-      2433796674
+      2433796674,
+      7395328413,
+      31536000000
     ],
-    "wrongAnswers": {}
+    "wrongAnswers": []
   },
-    "59": {
-        "id": 59,
-        "english": "because",
-        "german": "weil",
-        "nextQuestionTime": 1326716025112,
-        "gapHistory": [
-                       800214164,
-                       2433419412
-                       ],
-        "wrongAnswers": {
-            "59": {
-                "id": 60,
-                "when": 1326716015112,
-                "count": 1
-            }
-        }
-    },
-    "60": {
-        "id": 60,
-        "english": "besides",
-        "german": "außerdem",
-        "nextQuestionTime": 1326715979544,
-        "gapHistory": [
-                       800215993,
-                       2433415671
-                       ],
-        "wrongAnswers": {}
-    },
-    "61": {
-        "id": 61,
-        "english": "but",
-        "german": "aber, sondern",
-        "nextQuestionTime": 1358251974096,
-        "gapHistory": [
-                       800215916,
-                       2433415455
-                       ],
-        "wrongAnswers": {}
-    }
+  "2": {
+    "id": 2,
+    "english": "day",
+    "german": "der Tag",
+    "nextQuestionTime": 1358263110354,
+    "gapHistory": [
+      799953164,
+      2433796797,
+      7395332397,
+      31536000000
+    ],
+    "wrongAnswers": []
+  },
+  "3": {
+    "id": 3,
+    "english": "east",
+    "german": "der Osten, östlich",
+    "nextQuestionTime": 1358263096026,
+    "gapHistory": [
+      799965224,
+      2433782877,
+      7395298851,
+      31536000000
+    ],
+    "wrongAnswers": []
+  },
+  "4": {
+    "id": 4,
+    "english": "hour",
+    "german": "die Stunde",
+    "nextQuestionTime": 1358263098618,
+    "gapHistory": [
+      799965347,
+      2433787224,
+      7395303315,
+      31536000000
+    ],
+    "wrongAnswers": []
+  },
+  "10": {
+    "id": 10,
+    "english": "minute",
+    "german": "die Minute",
+    "nextQuestionTime": 1358251930760,
+    "gapHistory": [
+      800133856,
+      2433469269,
+      7394493282,
+      31536000000
+    ],
+    "wrongAnswers": []
+  }
 }

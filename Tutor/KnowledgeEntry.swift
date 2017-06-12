@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct KnowledgeEntry: CustomStringConvertible, Equatable {
+class KnowledgeEntry: CustomStringConvertible, Equatable {
     
     public let id: Int
     public let english: String
@@ -26,7 +26,7 @@ struct KnowledgeEntry: CustomStringConvertible, Equatable {
         self.wrongAnswers = wrongAnswers
     }
     
-    mutating func addWrongAnswer(_ newWrongAnswerEntry: KnowledgeEntry) {
+    func addWrongAnswer(_ newWrongAnswerEntry: KnowledgeEntry) {
         if hasHadWrongAnswerBefore(givenAnswer: newWrongAnswerEntry) {
             print("Had that wrong answer before")
             if let previousWrongAnswer = wrongAnswers.filter({$0.id == newWrongAnswerEntry.id}).first {
@@ -51,7 +51,7 @@ struct KnowledgeEntry: CustomStringConvertible, Equatable {
         return false
     }
     
-    public mutating func removeWrongAnswer(_ wrongAnswer: WrongAnswer) {
+    public func removeWrongAnswer(_ wrongAnswer: WrongAnswer) {
         if let index = wrongAnswers.index(of: wrongAnswer) {
             wrongAnswers.remove(at: index)
         }
