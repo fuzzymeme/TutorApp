@@ -9,5 +9,5 @@
 import Foundation
 
 struct ResourceStrings {
-    static let questionTemplate = "What is $german in English?"
+    static let questionTemplate = "What is \"$german\" in English?"
 }

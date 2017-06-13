@@ -12,10 +12,9 @@ struct JsonModelReader {
     
     func retrieveFromJsonFile(filename: String) -> [Int: KnowledgeEntry] {
         
-        let filePath = Bundle.main.resourcePath!
         var entries = [Int: KnowledgeEntry]()
         
-        let data = try! String(contentsOfFile: filePath + "/" + filename, encoding: String.Encoding.utf8)
+        let data = dataFromSavedFileOrBundleFile(filename)
         
         if let entriesDict = convertToDictionary(text: data) {
             for(key, value) in entriesDict {
@@ -26,6 +25,27 @@ struct JsonModelReader {
         }
         
         return entries
+    }
+    
+    private func dataFromSavedFileOrBundleFile(_ filename: String) -> String {
+        
+        var data: String
+        
+        let savedFilePath = pathForSavedFile()
+        let bundleFilePath = Bundle.main.resourcePath! + "/" + filename
+        
+        if FileManager.default.fileExists(atPath: savedFilePath) {
+            data = try! String(contentsOfFile: savedFilePath, encoding: String.Encoding.utf8)
+        } else {
+            data = try! String(contentsOfFile: bundleFilePath, encoding: String.Encoding.utf8)
+        }
+        
+        return data
+    }
+    
+    private func pathForSavedFile() -> String {
+        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        return dir!.appendingPathComponent("output.json").path
     }
     
     private func parseEntry(key: String, value: Any?) -> KnowledgeEntry? {

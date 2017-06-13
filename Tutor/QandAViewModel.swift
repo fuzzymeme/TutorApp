@@ -13,10 +13,12 @@ class QandAViewModel {
     private var strategy = AugmentedSpacedRepetitionStrategy()
     private var entries = [Int: KnowledgeEntry]()
     private var currentQAndA: QandAGroup?
+    private let filename = "test.json"
+//    private let filename = "basic_vocabulary_en2de.json"
     
     func loadModel() {        
         let modelReader = JsonModelReader()
-        entries = modelReader.retrieveFromJsonFile(filename: "test.json")
+        entries = modelReader.retrieveFromJsonFile(filename: filename)
     }
     
     func qAndASet() -> QandAGroup? {
