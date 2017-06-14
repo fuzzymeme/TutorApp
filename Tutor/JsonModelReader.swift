@@ -10,11 +10,11 @@ import Foundation
 
 struct JsonModelReader {
     
-    func retrieveFromJsonFile(filename: String) -> [Int: KnowledgeEntry] {
+    func retrieveFromJsonFile(filename: String, forceFromBundle: Bool = false) -> [Int: KnowledgeEntry] {
         
         var entries = [Int: KnowledgeEntry]()
         
-        let data = dataFromSavedFileOrBundleFile(filename)
+        let data = dataFromSavedFileOrBundleFile(filename, forceFromBundle: forceFromBundle)
         
         if let entriesDict = convertToDictionary(text: data) {
             for(key, value) in entriesDict {
@@ -27,17 +27,17 @@ struct JsonModelReader {
         return entries
     }
     
-    private func dataFromSavedFileOrBundleFile(_ filename: String) -> String {
+    private func dataFromSavedFileOrBundleFile(_ filename: String, forceFromBundle: Bool = false) -> String {
         
         var data: String
         
         let savedFilePath = pathForSavedFile()
         let bundleFilePath = Bundle.main.resourcePath! + "/" + filename
         
-        if FileManager.default.fileExists(atPath: savedFilePath) {
-            data = try! String(contentsOfFile: savedFilePath, encoding: String.Encoding.utf8)
-        } else {
+        if forceFromBundle || !FileManager.default.fileExists(atPath: savedFilePath) {
             data = try! String(contentsOfFile: bundleFilePath, encoding: String.Encoding.utf8)
+        } else {
+            data = try! String(contentsOfFile: savedFilePath, encoding: String.Encoding.utf8)
         }
         
         return data
@@ -58,7 +58,7 @@ struct JsonModelReader {
                 gapHistory = nonEmpty
             }
             
-            if let nonEmpty = entry["wrongAnswers"] as? [String : Any] {
+            if let nonEmpty = entry["wrongAnswers"] as? [Any] {
                 wrongAnswers.append(contentsOf: parseWrongAnswers(wrongAnswerInput: nonEmpty))
             }
             
@@ -75,10 +75,10 @@ struct JsonModelReader {
         return nil
     }
     
-    private func parseWrongAnswers(wrongAnswerInput: [String: Any?]) -> [WrongAnswer] {
+    private func parseWrongAnswers(wrongAnswerInput: [Any?]) -> [WrongAnswer] {
         var wrongAnswers = [WrongAnswer]()
         
-        for wrongAnswerValue in wrongAnswerInput.values {
+        for wrongAnswerValue in wrongAnswerInput {
             if let wrongAnswerDict = wrongAnswerValue as? [String : Int],
                 let wrongAnswer = parseWrongAnswer(wrongAnswerDict) {
                 wrongAnswers.append(wrongAnswer)

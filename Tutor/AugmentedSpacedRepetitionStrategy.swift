@@ -20,6 +20,11 @@ class AugmentedSpacedRepetitionStrategy {
         var question = ""
         indexOfCorrectAnswer = Utils.randomInt(limit: 4)
         print("indexOfCorrectAnswer \(indexOfCorrectAnswer!)")
+        
+        if let chosenEntry = getEntryDueToBeAskedNext(from: model) {
+            print("Oldest \"Next Time\": \(Utils.dateString(from: chosenEntry.getNextQuestionTime()!))")
+        }
+        
         currentQuestionEntry = model.randomEntry()
         if let currentQuestionEntry = currentQuestionEntry,
             let correctIndex = indexOfCorrectAnswer {
@@ -44,9 +49,61 @@ class AugmentedSpacedRepetitionStrategy {
     
     func recordAnswerGiven(_ answerIndex: Int) {
         if let indexOfCorrectAnswer = indexOfCorrectAnswer {
-            if answerIndex != indexOfCorrectAnswer {
-                currentQuestionEntry?.addWrongAnswer(indexToEntryDict[answerIndex]!)
+            if answerIndex != indexOfCorrectAnswer,
+                let currentQuestionEntry = currentQuestionEntry {
+                currentQuestionEntry.addWrongAnswer(indexToEntryDict[answerIndex]!)
+                if let nextQuestionTime = getNextTime(withScale: 0.1, onEntry: currentQuestionEntry) {
+                    print("Wrong - Next Question Time: \(Utils.dateString(from: nextQuestionTime))")
+                    currentQuestionEntry.setNextQuestionTime(nextQuestionTime)
+                }
+            } else {
+                if let currentQuestionEntry = currentQuestionEntry {
+                    if let nextQuestionTime = getNextTime(withScale: 2.0, onEntry: currentQuestionEntry) {
+                        print("Right - Next Question Time: \(Utils.dateString(from: nextQuestionTime))")
+                        currentQuestionEntry.setNextQuestionTime(nextQuestionTime)
+                    }
+                }
             }
         }
     }
+    
+    private func getNextTime(withScale scale: Double, onEntry entry: KnowledgeEntry) -> Int? {
+        if let lastGap = getLastGap(ofEntry: entry) {
+            print("last gap: \(lastGap)")
+            let nextGap = Double(lastGap) * scale
+            let nextQuestionTime = Double(Utils.getCurrentMillis()) + nextGap
+            return Int(nextQuestionTime)
+        }
+        return nil
+    }
+    
+    private func getLastGap(ofEntry entry: KnowledgeEntry) -> Int? {
+        let gapHistory = entry.getGapHistory()
+        
+        guard gapHistory.count >= 2 else {
+            return nil
+        }
+        
+        let penultimate = gapHistory[gapHistory.count - 2]
+        let ultimate = gapHistory[gapHistory.count - 1]
+        return (ultimate - penultimate)
+    }
+    
+    func getEntryDueToBeAskedNext(from model: QandAViewModel) -> KnowledgeEntry? {
+        
+        var earliestNextTime: Int = Int.max
+        var chosenEntry: KnowledgeEntry?
+        
+        for index in 0..<model.count() {
+            let entry = model.entryAt(index: index)
+            if let entryNextTime = entry.getNextQuestionTime() {
+                if entryNextTime < earliestNextTime {
+                    earliestNextTime = entryNextTime
+                    chosenEntry = entry
+                }
+            }
+        }
+        return chosenEntry
+    }
+    
 }

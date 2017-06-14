@@ -61,6 +61,10 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
         return nextQuestionTime
     }
     
+    public func setNextQuestionTime(_ nextTime: Int) {
+        nextQuestionTime = nextTime
+    }
+    
     public func getGapHistory() -> [Int] {
         return gapHistory
     }

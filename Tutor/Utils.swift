@@ -21,6 +21,17 @@ class Utils {
     static func getCurrentMillis()-> Int {
         return Int(Date().timeIntervalSince1970 * 1000)
     }
+    
+    static func dateString(from milliSeconds: Int) -> String {
+        let date = Date(timeIntervalSince1970: Double(milliSeconds / 1000))
+        
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = "YYYY-MM-dd hh:mm a"
+        
+        let dateString = dayTimePeriodFormatter.string(from: date)
+        
+        return dateString
+    }
 }
 
 extension String {

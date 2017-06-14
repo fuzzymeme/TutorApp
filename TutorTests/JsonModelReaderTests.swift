@@ -19,31 +19,49 @@ class JsonModelReaderTests: XCTestCase {
     }
     
     func test_retrieveFromJsonFile_withSimpleFormatNoGapHistoryOrWrongsAnswers() {
-        let actual = reader.retrieveFromJsonFile(filename: "test.json")
+        let actual = reader.retrieveFromJsonFile(filename: "test.json", forceFromBundle: true)
+        
+        XCTAssertEqual(sampleKnowledgeEntries()[0], actual[0])
+        XCTAssertEqual(sampleKnowledgeEntries()[1], actual[1])
+        XCTAssertEqual(sampleKnowledgeEntries()[2], actual[2])
+        XCTAssertEqual(sampleKnowledgeEntries()[3], actual[3])
+        XCTAssertEqual(sampleKnowledgeEntries()[4], actual[4])
+        
         XCTAssert(sampleKnowledgeEntries() == actual)
     }
 
     // MARK: - Helpers
-    private func sampleKnowledgeEntries() -> [Int: KnowledgeEntry] {
-        let knowledgeEntry0 = KnowledgeEntry(id: 0, english: "autumn", german: "der Herbst", nextQuestionTime: 1358263105338, gapHistory: [899955507, 8433796674], wrongAnswers: [])
-        let knowledgeEntry1 = KnowledgeEntry(id: 1, english: "century", german: "das Jahrhundert", nextQuestionTime: 1358263108626, gapHistory: [799955507, 2433796674], wrongAnswers: [])
-        let knowledgeEntry2 = KnowledgeEntry(id: 59, english: "because", german: "weil", nextQuestionTime: 1326716025112, gapHistory: [800214164, 2433419412], wrongAnswers: JsonModelReaderTests.sampleWrongAnswer())
-        let knowledgeEntry3 = KnowledgeEntry(id: 60, english: "besides", german: "außerdem", nextQuestionTime: 1326715979544, gapHistory: [800215993, 2433415671], wrongAnswers: [])
-        let knowledgeEntry4 = KnowledgeEntry(id: 61, english: "but", german: "aber, sondern", nextQuestionTime: 1358251974096, gapHistory: [800215916, 2433415455], wrongAnswers: [])
+    func sampleKnowledgeEntries() -> [Int: KnowledgeEntry] {
+        let knowledgeEntry0 = KnowledgeEntry(id: 0, english: "autumn", german: "der Herbst", nextQuestionTime: 1358263105338, gapHistory: [797679086,
+                                                                                                                                           2437408407,
+                                                                                                                                           7148207265,
+                                                                                                                                           31536000000], wrongAnswers: [])
+        let knowledgeEntry1 = KnowledgeEntry(id: 1, english: "century", german: "das Jahrhundert", nextQuestionTime: 1358263108626, gapHistory: [799955507,
+                                                                                                                                                 2433796674,
+                                                                                                                                                 7395328413,
+                                                                                                                                                 31536000000], wrongAnswers: [])
+        let knowledgeEntry2 = KnowledgeEntry(id: 2, english: "day", german: "der Tag", nextQuestionTime: 1358263110354, gapHistory: [799953164,
+                                                                                                                                     2433796797,
+                                                                                                                                     7395332397,
+                                                                                                                                     31536000000],
+                                                                                                            wrongAnswers: JsonModelReaderTests.sampleWrongAnswer())
+        let knowledgeEntry3 = KnowledgeEntry(id: 3, english: "east", german: "der Osten, ostlich", nextQuestionTime: 1358263096026, gapHistory: [799965224,
+                                                                                                                                                  2433782877,
+                                                                                                                                                  7395298851,
+                                                                                                                                                  31536000000], wrongAnswers: [])
+        let knowledgeEntry4 = KnowledgeEntry(id: 4, english: "hour", german: "die Stunde", nextQuestionTime: 1358263098618, gapHistory: [799965347,
+                                                                                                                                         2433787224,
+                                                                                                                                         7395303315,
+                                                                                                                                         31536000000], wrongAnswers: [])
+        let knowledgeEntry10 = KnowledgeEntry(id: 10, english: "minute", german: "die Minute", nextQuestionTime: 1358251930760, gapHistory: [800133856,
+                                                                                                                                             2433469269,
+                                                                                                                                             7394493282,
+                                                                                                                                             31536000000], wrongAnswers: [])
         
-        return [0: knowledgeEntry0, 1: knowledgeEntry1, 59: knowledgeEntry2, 60: knowledgeEntry3, 61: knowledgeEntry4]
+        return [0: knowledgeEntry0, 1: knowledgeEntry1, 2: knowledgeEntry2, 3: knowledgeEntry3, 4: knowledgeEntry4, 10: knowledgeEntry10]
     }
     
     static private func sampleWrongAnswer() -> [WrongAnswer] {
         return [WrongAnswer(id: 194, when: 1326716015112, count: 1)]
-    }
-    
-    private func sampleWrongAnswerString() -> String {
-        return "{\n" +
-        "\"59\": {\n" +
-            "\"id\": 194,\n" +
-            "\"when\": 1326716015112,\n" +
-            "\"count\": 1\n" +
-        "}"
     }
 }

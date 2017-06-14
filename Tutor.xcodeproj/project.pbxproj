@@ -12,7 +12,6 @@
 		2B1799A31ED4357400F74A39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1799A11ED4357400F74A39 /* Main.storyboard */; };
 		2B1799A51ED4357400F74A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B1799A41ED4357400F74A39 /* Assets.xcassets */; };
 		2B1799A81ED4357400F74A39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B1799A61ED4357400F74A39 /* LaunchScreen.storyboard */; };
-		2B1799B31ED4357400F74A39 /* TutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1799B21ED4357400F74A39 /* TutorTests.swift */; };
 		2B1799BE1ED4357400F74A39 /* TutorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1799BD1ED4357400F74A39 /* TutorUITests.swift */; };
 		2B2AA39A1ED8692500CE542D /* basic_vocabulary_en2de.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AA3991ED8692500CE542D /* basic_vocabulary_en2de.json */; };
 		2B2AA39D1ED871C300CE542D /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2AA39C1ED871C300CE542D /* test.json */; };
@@ -22,6 +21,7 @@
 		2B4F67451ED46BA900B00F3B /* QandAGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4F67441ED46BA900B00F3B /* QandAGroup.swift */; };
 		2B56C3C51EDF34DD00444913 /* JsonModelReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56C3C41EDF34DD00444913 /* JsonModelReader.swift */; };
 		2B56C3C81EDF386C00444913 /* JsonModelReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56C3C71EDF386C00444913 /* JsonModelReaderTests.swift */; };
+		2B600C441EF1D0D2001B9A1D /* AugmentedSpacedRepetitionStrategyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B600C431EF1D0D2001B9A1D /* AugmentedSpacedRepetitionStrategyTests.swift */; };
 		2BB3704A1EDB6B3500119CAE /* QandAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB370491EDB6B3500119CAE /* QandAView.swift */; };
 		2BC5F7451EE0250200F5172D /* TwoWayMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5F7441EE0250200F5172D /* TwoWayMap.swift */; };
 		2BC5F7471EE02C1400F5172D /* TwoWayMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5F7461EE02C1400F5172D /* TwoWayMapTests.swift */; };
@@ -56,7 +56,6 @@
 		2B1799A71ED4357400F74A39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B1799A91ED4357400F74A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1799AE1ED4357400F74A39 /* TutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B1799B21ED4357400F74A39 /* TutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorTests.swift; sourceTree = "<group>"; };
 		2B1799B41ED4357400F74A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B1799B91ED4357400F74A39 /* TutorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TutorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1799BD1ED4357400F74A39 /* TutorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorUITests.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		2B4F67441ED46BA900B00F3B /* QandAGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAGroup.swift; sourceTree = "<group>"; };
 		2B56C3C41EDF34DD00444913 /* JsonModelReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModelReader.swift; sourceTree = "<group>"; };
 		2B56C3C71EDF386C00444913 /* JsonModelReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModelReaderTests.swift; sourceTree = "<group>"; };
+		2B600C431EF1D0D2001B9A1D /* AugmentedSpacedRepetitionStrategyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AugmentedSpacedRepetitionStrategyTests.swift; sourceTree = "<group>"; };
 		2BB370491EDB6B3500119CAE /* QandAView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QandAView.swift; sourceTree = "<group>"; };
 		2BC5F7441EE0250200F5172D /* TwoWayMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayMap.swift; sourceTree = "<group>"; };
 		2BC5F7461EE02C1400F5172D /* TwoWayMapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayMapTests.swift; sourceTree = "<group>"; };
@@ -147,10 +147,10 @@
 		2B1799B11ED4357400F74A39 /* TutorTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B1799B21ED4357400F74A39 /* TutorTests.swift */,
 				2B1799B41ED4357400F74A39 /* Info.plist */,
 				2B56C3C71EDF386C00444913 /* JsonModelReaderTests.swift */,
 				2BC5F7461EE02C1400F5172D /* TwoWayMapTests.swift */,
+				2B600C431EF1D0D2001B9A1D /* AugmentedSpacedRepetitionStrategyTests.swift */,
 			);
 			path = TutorTests;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B56C3C81EDF386C00444913 /* JsonModelReaderTests.swift in Sources */,
-				2B1799B31ED4357400F74A39 /* TutorTests.swift in Sources */,
+				2B600C441EF1D0D2001B9A1D /* AugmentedSpacedRepetitionStrategyTests.swift in Sources */,
 				2BC5F7471EE02C1400F5172D /* TwoWayMapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

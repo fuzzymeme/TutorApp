@@ -36,12 +36,16 @@
       7395332397,
       31536000000
     ],
-    "wrongAnswers": []
+    "wrongAnswers": [
+      {"id": 194,
+        "when": 1326716015112,
+        "count": 1
+      }]
   },
   "3": {
     "id": 3,
     "english": "east",
-    "german": "der Osten, östlich",
+    "german": "der Osten, ostlich",
     "nextQuestionTime": 1358263096026,
     "gapHistory": [
       799965224,
