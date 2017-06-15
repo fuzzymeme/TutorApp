@@ -3,7 +3,7 @@
     "id": 0,
     "english": "autumn",
     "german": "der Herbst",
-    "nextQuestionTime": 1358263105338,
+    "nextQuestionTime": 1358263205338,
     "gapHistory": [
       797679086,
       2437408407,
@@ -16,7 +16,7 @@
     "id": 1,
     "english": "century",
     "german": "das Jahrhundert",
-    "nextQuestionTime": 1358263108626,
+    "nextQuestionTime": 1358263105338,
     "gapHistory": [
       799955507,
       2433796674,
@@ -29,7 +29,7 @@
     "id": 2,
     "english": "day",
     "german": "der Tag",
-    "nextQuestionTime": 1358263110354,
+    "nextQuestionTime": 1358263205338,
     "gapHistory": [
       799953164,
       2433796797,
@@ -46,7 +46,7 @@
     "id": 3,
     "english": "east",
     "german": "der Osten, ostlich",
-    "nextQuestionTime": 1358263096026,
+    "nextQuestionTime": 1358263205338,
     "gapHistory": [
       799965224,
       2433782877,
@@ -59,7 +59,7 @@
     "id": 4,
     "english": "hour",
     "german": "die Stunde",
-    "nextQuestionTime": 1358263098618,
+    "nextQuestionTime": 1358263205338,
     "gapHistory": [
       799965347,
       2433787224,
@@ -72,7 +72,7 @@
     "id": 10,
     "english": "minute",
     "german": "die Minute",
-    "nextQuestionTime": 1358251930760,
+    "nextQuestionTime": 1358263205338,
     "gapHistory": [
       800133856,
       2433469269,

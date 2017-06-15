@@ -61,7 +61,7 @@ class ViewController: UIViewController, QandAViewListener {
     private func setAnswers() {
         
         if let qAndASet = model.qAndASet() {        
-            qandAView.question = qAndASet.question
+            qandAView.question = Utils.completeTemplate(ResourceStrings.questionTemplate, replace: "$german", with: qAndASet.question)
             qandAView.setAnswers(qAndASet.answers)
         } else {
             /// TODO Clear question and answers and display an error message. 

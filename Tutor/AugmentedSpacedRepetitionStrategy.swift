@@ -19,16 +19,11 @@ class AugmentedSpacedRepetitionStrategy {
         var answers = [String]()
         var question = ""
         indexOfCorrectAnswer = Utils.randomInt(limit: 4)
-        print("indexOfCorrectAnswer \(indexOfCorrectAnswer!)")
         
-        if let chosenEntry = getEntryDueToBeAskedNext(from: model) {
-            print("Oldest \"Next Time\": \(Utils.dateString(from: chosenEntry.getNextQuestionTime()!))")
-        }
-        
-        currentQuestionEntry = model.randomEntry()
+        currentQuestionEntry = getEntryDueToBeAskedNext(from: model)
         if let currentQuestionEntry = currentQuestionEntry,
             let correctIndex = indexOfCorrectAnswer {
-            question = Utils.completeTemplate(ResourceStrings.questionTemplate, replace: "$german", with: currentQuestionEntry.german)
+            question = currentQuestionEntry.german
             var alreadyChosenIds = [currentQuestionEntry.id]
             
             for i in 0...3 {
@@ -67,6 +62,10 @@ class AugmentedSpacedRepetitionStrategy {
         }
     }
     
+    func getEntryFor(index: Int) -> KnowledgeEntry {
+        return indexToEntryDict[index]!
+    }
+    
     private func getNextTime(withScale scale: Double, onEntry entry: KnowledgeEntry) -> Int? {
         if let lastGap = getLastGap(ofEntry: entry) {
             print("last gap: \(lastGap)")
@@ -89,10 +88,10 @@ class AugmentedSpacedRepetitionStrategy {
         return (ultimate - penultimate)
     }
     
-    func getEntryDueToBeAskedNext(from model: QandAViewModel) -> KnowledgeEntry? {
+    private func getEntryDueToBeAskedNext(from model: QandAViewModel) -> KnowledgeEntry {
         
         var earliestNextTime: Int = Int.max
-        var chosenEntry: KnowledgeEntry?
+        var chosenEntry = model.entryAt(index: 0)
         
         for index in 0..<model.count() {
             let entry = model.entryAt(index: index)
