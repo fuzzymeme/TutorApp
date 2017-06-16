@@ -43,20 +43,24 @@ class AugmentedSpacedRepetitionStrategy {
     }
     
     func recordAnswerGiven(_ answerIndex: Int) {
-        if let indexOfCorrectAnswer = indexOfCorrectAnswer {
-            if answerIndex != indexOfCorrectAnswer,
-                let currentQuestionEntry = currentQuestionEntry {
+        if let indexOfCorrectAnswer = indexOfCorrectAnswer,
+            let currentQuestionEntry = currentQuestionEntry {
+            
+            
+            
+            if answerIndex != indexOfCorrectAnswer {
+                currentQuestionEntry.recordHistory(.Wrong)
+                
                 currentQuestionEntry.addWrongAnswer(indexToEntryDict[answerIndex]!)
                 if let nextQuestionTime = getNextTime(withScale: 0.1, onEntry: currentQuestionEntry) {
                     print("Wrong - Next Question Time: \(Utils.dateString(from: nextQuestionTime))")
                     currentQuestionEntry.setNextQuestionTime(nextQuestionTime)
                 }
             } else {
-                if let currentQuestionEntry = currentQuestionEntry {
-                    if let nextQuestionTime = getNextTime(withScale: 2.0, onEntry: currentQuestionEntry) {
-                        print("Right - Next Question Time: \(Utils.dateString(from: nextQuestionTime))")
-                        currentQuestionEntry.setNextQuestionTime(nextQuestionTime)
-                    }
+                currentQuestionEntry.recordHistory(.Correct)
+                if let nextQuestionTime = getNextTime(withScale: 2.0, onEntry: currentQuestionEntry) {
+                    print("Right - Next Question Time: \(Utils.dateString(from: nextQuestionTime))")
+                    currentQuestionEntry.setNextQuestionTime(nextQuestionTime)
                 }
             }
         }

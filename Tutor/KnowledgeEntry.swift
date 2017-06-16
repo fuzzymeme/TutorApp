@@ -15,6 +15,7 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
     public let german: String
     private var nextQuestionTime: Int?
     private var gapHistory: [Int]
+    private var history:[HistoryItem]
     private var wrongAnswers: [WrongAnswer]
     
     init(id: Int, english: String, german: String, nextQuestionTime: Int?, gapHistory: [Int], wrongAnswers: [WrongAnswer]) {
@@ -24,6 +25,11 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
         self.nextQuestionTime = nextQuestionTime
         self.gapHistory = gapHistory
         self.wrongAnswers = wrongAnswers
+        self.history = [HistoryItem]()
+    }
+    
+    func recordHistory(_ answerType: HistoryItem.AnswerType) {
+        history.append(HistoryItem(correctness: answerType, time: Utils.getCurrentMillis()))
     }
     
     func addWrongAnswer(_ newWrongAnswerEntry: KnowledgeEntry) {
@@ -69,6 +75,10 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
         return gapHistory
     }
     
+    public func getHistory() -> [HistoryItem] {
+        return history
+    }
+    
     public func getWrongAnswers() -> [WrongAnswer] {
         return wrongAnswers
     }
@@ -105,4 +115,26 @@ struct WrongAnswer: CustomStringConvertible, Equatable {
             lhs.when == rhs.when &&
             lhs.count == rhs.count
     }
+}
+
+struct HistoryItem {
+    
+    enum AnswerType {
+        case Correct
+        case Wrong
+    }
+    
+    public let correctness: AnswerType
+    public let time: Int
+    
+    public var description : String {
+        return "Correctness: \(correctness), Time: \(time)"
+    }
+    
+    public static func ==(lhs: HistoryItem, rhs: HistoryItem) -> Bool {
+        return
+            lhs.correctness == rhs.correctness &&
+            lhs.time == rhs.time
+    }
+    
 }

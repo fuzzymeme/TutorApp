@@ -48,6 +48,7 @@ class JsonModelWriter {
         json["german"] = entry.german
         json["nextQuestionTime"] = entry.getNextQuestionTime() ?? 0
         json["gapHistory"] = entry.getGapHistory()
+        json["history"] = historyAsJsonable(entry.getHistory())
         json["wrongAnswers"] = wrongAnswersAsJsonable(entry.getWrongAnswers())
         
         return json
@@ -66,5 +67,26 @@ class JsonModelWriter {
         }
         
         return wrongAnswersAsJson
+    }
+    
+    private func historyAsJsonable(_ history: [HistoryItem]) -> [String: [Int]] {
+        
+        var historyAsJson = [String: [Int]]()
+        var wrongTimes = [Int]()
+        var correctTimes = [Int]()
+        
+        for historyItem in history {
+            switch historyItem.correctness {
+            case .Correct:
+                correctTimes.append(historyItem.time)
+            case .Wrong:
+                wrongTimes.append(historyItem.time)
+            }
+        }
+
+        historyAsJson["Correct"] = correctTimes
+        historyAsJson["Wrong"] = wrongTimes
+        
+        return historyAsJson
     }
 }
