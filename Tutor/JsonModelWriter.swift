@@ -84,8 +84,8 @@ class JsonModelWriter {
             }
         }
 
-        historyAsJson["Correct"] = correctTimes
-        historyAsJson["Wrong"] = wrongTimes
+        historyAsJson["correct"] = correctTimes
+        historyAsJson["incorrect"] = wrongTimes
         
         return historyAsJson
     }

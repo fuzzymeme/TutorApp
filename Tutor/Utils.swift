@@ -32,6 +32,18 @@ class Utils {
         
         return dateString
     }
+    
+    static func convertToIntArray(_ text: String) -> [Int]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [Int]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
+    }
+
 }
 
 extension String {

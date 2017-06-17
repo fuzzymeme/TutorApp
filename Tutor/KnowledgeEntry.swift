@@ -18,14 +18,14 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
     private var history:[HistoryItem]
     private var wrongAnswers: [WrongAnswer]
     
-    init(id: Int, english: String, german: String, nextQuestionTime: Int?, gapHistory: [Int], wrongAnswers: [WrongAnswer]) {
+    init(id: Int, english: String, german: String, nextQuestionTime: Int?, gapHistory: [Int], wrongAnswers: [WrongAnswer], history: [HistoryItem] = [HistoryItem]()) {
         self.id = id
         self.english = english
         self.german = german
         self.nextQuestionTime = nextQuestionTime
         self.gapHistory = gapHistory
         self.wrongAnswers = wrongAnswers
-        self.history = [HistoryItem]()
+        self.history = history
     }
     
     func recordHistory(_ answerType: HistoryItem.AnswerType) {
@@ -95,7 +95,8 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
             lhs.german == rhs.german &&
             lhs.nextQuestionTime == rhs.nextQuestionTime &&
             lhs.gapHistory == rhs.gapHistory &&
-            lhs.wrongAnswers == rhs.wrongAnswers
+            lhs.wrongAnswers == rhs.wrongAnswers &&
+            lhs.history == rhs.history
     }
 }
 
@@ -117,7 +118,7 @@ struct WrongAnswer: CustomStringConvertible, Equatable {
     }
 }
 
-struct HistoryItem {
+struct HistoryItem: Equatable {
     
     enum AnswerType {
         case Correct

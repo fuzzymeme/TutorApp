@@ -52,6 +52,7 @@ struct JsonModelReader {
         
         var gapHistory = [Int]()
         var wrongAnswers = [WrongAnswer]()
+        var history = [HistoryItem]()
         
         if let entry = value as? [String: Any] {
             if let nonEmpty = entry["gapHistory"] as? [Int] {
@@ -62,11 +63,15 @@ struct JsonModelReader {
                 wrongAnswers.append(contentsOf: parseWrongAnswers(wrongAnswerInput: nonEmpty))
             }
             
+            if let historyJson = entry["history"] as? [String: Any] {
+                history.append(contentsOf: parseHistory(historyJson))
+            }
+            
             if let id = Int(key),
                 let english = entry["english"] as? String,
                 let german = entry["german"] as? String,
                 let nextTime = entry["nextQuestionTime"] as? Int {
-                let entry = KnowledgeEntry(id: id, english: english, german: german, nextQuestionTime: nextTime, gapHistory: gapHistory, wrongAnswers: wrongAnswers)
+                let entry = KnowledgeEntry(id: id, english: english, german: german, nextQuestionTime: nextTime, gapHistory: gapHistory, wrongAnswers: wrongAnswers, history: history)
                 return entry
             } else {
                 return nil
@@ -96,6 +101,25 @@ struct JsonModelReader {
         return nil
     }
     
+    private func parseHistory(_ historyInput: [String: Any?]) -> [HistoryItem] {
+        var history = [HistoryItem]()
+        
+        if let dates = historyInput["correct"] as? [Int] {
+            for date in dates {
+                history.append(HistoryItem(correctness: .Correct, time: date))
+            }
+        }
+        if let dates = historyInput["incorrect"] as? [Int] {
+            for date in dates {
+                history.append(HistoryItem(correctness: .Wrong, time: date))
+            }
+        }
+        history = history.sorted(by: { $0.time < $1.time })
+                
+        return history
+    }
+    
+    // TODO Move to Utils !!
     private func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
