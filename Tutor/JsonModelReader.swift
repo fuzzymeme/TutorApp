@@ -16,7 +16,7 @@ struct JsonModelReader {
         
         let data = dataFromSavedFileOrBundleFile(filename, forceFromBundle: forceFromBundle)
         
-        if let entriesDict = convertToDictionary(text: data) {
+        if let entriesDict = Utils.convertToDictionary(text: data) {
             for(key, value) in entriesDict {
                 if let newEntry = parseEntry(key: key, value: value) {
                     entries[newEntry.id] = newEntry
@@ -115,20 +115,10 @@ struct JsonModelReader {
             }
         }
         history = history.sorted(by: { $0.time < $1.time })
-                
+        
         return history
     }
     
-    // TODO Move to Utils !!
-    private func convertToDictionary(text: String) -> [String: Any]? {
-        if let data = text.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
+    
 
 }

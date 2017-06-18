@@ -51,7 +51,34 @@ class AugmentedSpacedRepetitionStrategyTests: XCTestCase {
         
         XCTAssertEqual(1, correctEntry.getWrongAnswers().count)
     }
+
+    func test_WhenWrongAnswerGiven_ThenCorrectHistoryIncreases() {
+        let qAndASet = strategy.qAndASet(from: model)
+        let correctEntry = strategy.getEntryFor(index: qAndASet.indexOfCorrectAnswer)
         
+        XCTAssertEqual(1, (correctEntry.getHistory().filter{ $0.correctness == .Correct}).count)
+        XCTAssertEqual(2, (correctEntry.getHistory().filter{ $0.correctness == .Wrong}).count)
+        
+        strategy.recordAnswerGiven(qAndASet.indexOfCorrectAnswer)
+        
+        XCTAssertEqual(2, (correctEntry.getHistory().filter{ $0.correctness == .Correct}).count)
+        XCTAssertEqual(2, (correctEntry.getHistory().filter{ $0.correctness == .Wrong}).count)
+    }
+
+    func test_WhenWrongAnswerGiven_ThenIncorrectHistoryIncreases() {
+        let qAndASet = strategy.qAndASet(from: model)
+        let wrongIndex = getWrongIndex(correctIndex: qAndASet.indexOfCorrectAnswer)
+        let correctEntry = strategy.getEntryFor(index: qAndASet.indexOfCorrectAnswer)
+        
+        XCTAssertEqual(1, (correctEntry.getHistory().filter{ $0.correctness == .Correct}).count)
+        XCTAssertEqual(2, (correctEntry.getHistory().filter{ $0.correctness == .Wrong}).count)
+        
+        strategy.recordAnswerGiven(wrongIndex)
+        
+        XCTAssertEqual(1, (correctEntry.getHistory().filter{ $0.correctness == .Correct}).count)
+        XCTAssertEqual(3, (correctEntry.getHistory().filter{ $0.correctness == .Wrong}).count)
+    }
+
     // MARK: - Helper funcs
     private func getWrongIndex(correctIndex: Int) -> Int {
         return (correctIndex + 1) % 4
