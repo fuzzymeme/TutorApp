@@ -47,7 +47,6 @@ class JsonModelWriter {
         json["english"] = entry.english
         json["german"] = entry.german
         json["nextQuestionTime"] = entry.getNextQuestionTime() ?? 0
-        json["gapHistory"] = entry.getGapHistory()
         json["history"] = historyAsJsonable(entry.getHistory())
         json["wrongAnswers"] = wrongAnswersAsJsonable(entry.getWrongAnswers())
         

@@ -81,14 +81,14 @@ class AugmentedSpacedRepetitionStrategy {
     }
     
     private func getLastGap(ofEntry entry: KnowledgeEntry) -> Int? {
-        let gapHistory = entry.getGapHistory()
+        let history = entry.getHistory()
         
-        guard gapHistory.count >= 2 else {
+        guard history.count >= 2 else {
             return nil
         }
         
-        let penultimate = gapHistory[gapHistory.count - 2]
-        let ultimate = gapHistory[gapHistory.count - 1]
+        let penultimate = history[history.count - 2].time
+        let ultimate = history[history.count - 1].time
         return (ultimate - penultimate)
     }
     

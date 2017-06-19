@@ -14,16 +14,16 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
     public let english: String
     public let german: String
     private var nextQuestionTime: Int?
-    private var gapHistory: [Int]
+//    private var gapHistory: [Int]
     private var history:[HistoryItem]
     private var wrongAnswers: [WrongAnswer]
     
-    init(id: Int, english: String, german: String, nextQuestionTime: Int?, gapHistory: [Int], wrongAnswers: [WrongAnswer], history: [HistoryItem] = [HistoryItem]()) {
+    init(id: Int, english: String, german: String, nextQuestionTime: Int?, wrongAnswers: [WrongAnswer], history: [HistoryItem] = [HistoryItem]()) {
         self.id = id
         self.english = english
         self.german = german
         self.nextQuestionTime = nextQuestionTime
-        self.gapHistory = gapHistory
+//        self.gapHistory = gapHistory
         self.wrongAnswers = wrongAnswers
         self.history = history
     }
@@ -71,10 +71,6 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
         nextQuestionTime = nextTime
     }
     
-    public func getGapHistory() -> [Int] {
-        return gapHistory
-    }
-    
     public func getHistory() -> [HistoryItem] {
         return history
     }
@@ -85,7 +81,7 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
     
     public var description : String {
         let nextTimeString = (nextQuestionTime != nil) ? String(nextQuestionTime!) : "none"
-        return "id: \(id), english: \(english), german: \(german), nextQuestionTime: \(nextTimeString), history: \(gapHistory), wrongAnswers: \(wrongAnswers)"
+        return "id: \(id), english: \(english), german: \(german), nextQuestionTime: \(nextTimeString), history: \(history), wrongAnswers: \(wrongAnswers)"
     }
     
     public static func ==(lhs: KnowledgeEntry, rhs: KnowledgeEntry) -> Bool {
@@ -94,7 +90,6 @@ class KnowledgeEntry: CustomStringConvertible, Equatable {
             lhs.english == rhs.english &&
             lhs.german == rhs.german &&
             lhs.nextQuestionTime == rhs.nextQuestionTime &&
-            lhs.gapHistory == rhs.gapHistory &&
             lhs.wrongAnswers == rhs.wrongAnswers &&
             lhs.history == rhs.history
     }

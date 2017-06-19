@@ -50,15 +50,11 @@ struct JsonModelReader {
     
     private func parseEntry(key: String, value: Any?) -> KnowledgeEntry? {
         
-        var gapHistory = [Int]()
         var wrongAnswers = [WrongAnswer]()
         var history = [HistoryItem]()
         
         if let entry = value as? [String: Any] {
-            if let nonEmpty = entry["gapHistory"] as? [Int] {
-                gapHistory = nonEmpty
-            }
-            
+
             if let nonEmpty = entry["wrongAnswers"] as? [Any] {
                 wrongAnswers.append(contentsOf: parseWrongAnswers(wrongAnswerInput: nonEmpty))
             }
@@ -71,7 +67,7 @@ struct JsonModelReader {
                 let english = entry["english"] as? String,
                 let german = entry["german"] as? String,
                 let nextTime = entry["nextQuestionTime"] as? Int {
-                let entry = KnowledgeEntry(id: id, english: english, german: german, nextQuestionTime: nextTime, gapHistory: gapHistory, wrongAnswers: wrongAnswers, history: history)
+                let entry = KnowledgeEntry(id: id, english: english, german: german, nextQuestionTime: nextTime, wrongAnswers: wrongAnswers, history: history)
                 return entry
             } else {
                 return nil
