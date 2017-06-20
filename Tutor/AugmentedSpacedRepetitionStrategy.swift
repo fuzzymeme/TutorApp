@@ -46,8 +46,6 @@ class AugmentedSpacedRepetitionStrategy {
         if let indexOfCorrectAnswer = indexOfCorrectAnswer,
             let currentQuestionEntry = currentQuestionEntry {
             
-            
-            
             if answerIndex != indexOfCorrectAnswer {
                 currentQuestionEntry.recordHistory(.Wrong)
                 
@@ -96,10 +94,15 @@ class AugmentedSpacedRepetitionStrategy {
         
         var earliestNextTime: Int = Int.max
         var chosenEntry = model.entryAt(index: 0)
-        
+    
         for index in 0..<model.count() {
             let entry = model.entryAt(index: index)
             if let entryNextTime = entry.getNextQuestionTime() {
+                
+                if entryNextTime < Utils.getCurrentMillis() {
+                    return entry
+                }
+                
                 if entryNextTime < earliestNextTime {
                     earliestNextTime = entryNextTime
                     chosenEntry = entry

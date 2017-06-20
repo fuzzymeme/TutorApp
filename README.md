@@ -10,3 +10,4 @@ ToDo:
 * Scores and stats in another tab
 * Other question sets e.g. coding, my shorthand (requires pictures)
 * There's a pause when it is looking for the next question to ask. 
+* The first time it asks a question it will immediately ask it again
